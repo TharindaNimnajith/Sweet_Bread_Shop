@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Sweet Bread Shop</string>
+    <string name="add_new_food_item">Add New Food Item</string>
+    <string name="chocolate_cake">Chocolate Cake</string>
+    <string name="burger_bun">Burger Bun</string>
+    <string name="cup_cake">Cup Cake</string>
+    <string name="burger_buns">Burger Buns</string>
+    <string name="milk_bread">Milk Bread</string>
+    <string name="discount">Discount</string>
+    <string name="price">Unit Price</string>
+    <string name="description">Description</string>
+    <string name="upload_an_image">Upload an Image</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_item">Add Item</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="name">Name</string>
+    <string name="no_description">no description</string>
+    <string name="_20_00">20.00</string>
+    <string name="_100_00">100.00</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="_80_00">80.00</string>
+    <string name="quantity">Quantity</string>
+</resources>
