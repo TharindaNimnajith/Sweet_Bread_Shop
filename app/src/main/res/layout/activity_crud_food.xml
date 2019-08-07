@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorAccent"
-    tools:context="com.example.ebreadshop.menuManagmwent.CRUDFoodActivity">
+    tools:context="com.example.ebreadshop.menuManagement.CRUDFoodActivity">
 
     <TextView
         android:id="@+id/title"

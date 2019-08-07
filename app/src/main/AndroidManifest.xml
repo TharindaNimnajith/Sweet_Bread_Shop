@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.ebreadshop.menuManagmwent.ViewFoodActivity"></activity>
-        <activity android:name="com.example.ebreadshop.menuManagmwent.CRUDFoodActivity" >
+        <activity android:name="com.example.ebreadshop.menuManagement.ViewFoodActivity"></activity>
+        <activity android:name="com.example.ebreadshop.menuManagement.CRUDFoodActivity" >
 
 
         </activity>
-        <activity android:name="com.example.ebreadshop.menuManagmwent.FoodListActivity" />
-        <activity android:name="com.example.ebreadshop.menuManagmwent.AddFoodItemActivity" />
-        <activity android:name="com.example.ebreadshop.menuManagmwent.MenuManagementActivity">
+        <activity android:name="com.example.ebreadshop.menuManagement.FoodListActivity" />
+        <activity android:name="com.example.ebreadshop.menuManagement.AddFoodItemActivity" />
+        <activity android:name="com.example.ebreadshop.menuManagement.MenuManagementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

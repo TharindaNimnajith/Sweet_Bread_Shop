@@ -1,4 +1,4 @@
-package com.example.ebreadshop.menuManagmwent;
+package com.example.ebreadshop.menuManagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 

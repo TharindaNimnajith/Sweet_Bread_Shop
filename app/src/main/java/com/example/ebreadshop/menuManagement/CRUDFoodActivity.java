@@ -1,4 +1,4 @@
-package com.example.ebreadshop.menuManagmwent;
+package com.example.ebreadshop.menuManagement;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,44 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.NumberPicker;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ebreadshop.R;
 
-public class ViewFoodActivity extends AppCompatActivity {
+public class CRUDFoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_food);
+        setContentView(R.layout.activity_crud_food);
 
         Log.i("Lifecycle", "OnCreate() invoked");
-
-        //Get the widgets reference from XML layout
-        final TextView tv = findViewById(R.id.unit_price);
-        NumberPicker np = findViewById(R.id.qty_value_);
-
-        //Set TextView text color
-        //tv.setTextColor(Color.parseColor("#ffd32b3b"));
-
-        //Populate NumberPicker values from minimum and maximum value range
-        //Set the minimum value of NumberPicker
-        np.setMinValue(1);
-        //Specify the maximum value/number of NumberPicker
-        np.setMaxValue(10);
-
-        //Gets whether the selector wheel wraps when reaching the min/max value.
-        np.setWrapSelectorWheel(true);
-
-        //Set a value change listener for NumberPicker
-        np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
-                //Display the newly selected number from picker
-                //tv.setText("Selected Number : " + newVal);
-            }
-        });
     }
 
     @Override
@@ -54,11 +27,29 @@ public class ViewFoodActivity extends AppCompatActivity {
         return true;
     }
 
-    public void addToCart(View view) {
-        Intent intent = new Intent(ViewFoodActivity.this, FoodListActivity.class);
+    public void cancel(View view) {
+        Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
+        startActivity(intent);
+    }
+
+    public void update(View view) {
+        Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
 
         Context context = getApplicationContext();
-        CharSequence text = "Item Added to the Shopping Cart";
+        CharSequence text = "Item Details Updated Successfully";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+
+        startActivity(intent);
+        toast.show();
+    }
+
+    public void delete(View view) {
+        Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
+
+        Context context = getApplicationContext();
+        CharSequence text = "Item Deleted Successfully";
         int duration = Toast.LENGTH_SHORT;
 
         Toast toast = Toast.makeText(context, text, duration);
