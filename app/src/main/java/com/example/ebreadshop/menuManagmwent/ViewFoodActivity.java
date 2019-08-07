@@ -1,4 +1,4 @@
-package com.example.ebreadshop;
+package com.example.ebreadshop.menuManagmwent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.ebreadshop.R;
 
 public class ViewFoodActivity extends AppCompatActivity {
     @Override

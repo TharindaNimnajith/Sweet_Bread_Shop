@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
-        tools:context="com.example.sweetbreadshop.AddFoodItemActivity">
+        tools:context="com.example.ebreadshop.menuManagmwent.AddFoodItemActivity">
 
         <ImageView
             android:id="@+id/add_food_item"

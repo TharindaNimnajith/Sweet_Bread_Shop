@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorAccent"
-    tools:context="com.example.sweetbreadshop.ViewFoodActivity">
+    tools:context="com.example.ebreadshop.menuManagmwent.ViewFoodActivity">
 
     <TextView
         android:id="@+id/unit_price_"

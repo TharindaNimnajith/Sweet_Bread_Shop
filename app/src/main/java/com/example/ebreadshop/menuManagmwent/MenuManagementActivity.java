@@ -1,21 +1,20 @@
-package com.example.ebreadshop;
+package com.example.ebreadshop.menuManagmwent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Toast;
 
-public class AddFoodItemActivity extends AppCompatActivity {
+import com.example.ebreadshop.R;
 
+public class MenuManagementActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_food_item);
+        setContentView(R.layout.activity_menu_management);
 
         Log.i("Lifecycle", "OnCreate() invoked");
     }
@@ -26,22 +25,14 @@ public class AddFoodItemActivity extends AppCompatActivity {
         return true;
     }
 
-    public void cancel(View view) {
-        Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
+    public void add(View view) {
+        Intent intent = new Intent(MenuManagementActivity.this, AddFoodItemActivity.class);
         startActivity(intent);
     }
 
-    public void addItem(View view) {
-        Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
-
-        Context context = getApplicationContext();
-        CharSequence text = "Item Added Successfully";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-
+    public void crud(View view) {
+        Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
         startActivity(intent);
-        toast.show();
     }
 
     @Override
@@ -84,10 +75,5 @@ public class AddFoodItemActivity extends AppCompatActivity {
         super.onDestroy();
 
         Log.i("Lifecycle", "onDestroy() invoked");
-    }
-
-    public void test(View view) {
-        Intent intent = new Intent(AddFoodItemActivity.this, FoodListActivity.class);
-        startActivity(intent);
     }
 }
