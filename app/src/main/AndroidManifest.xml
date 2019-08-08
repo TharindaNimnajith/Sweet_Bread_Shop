@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".user.CustomerLoginActivity"></activity>
+        <activity android:name=".delivery.MainActivity"></activity>
+        <activity android:name=".user.CustomerLoginActivity" />
         <activity android:name=".menuManagement.ViewFoodActivity" />
-        <activity android:name=".menuManagement.CRUDFoodActivity"></activity>
+        <activity android:name=".menuManagement.CRUDFoodActivity" />
         <activity android:name=".menuManagement.FoodListActivity" />
         <activity android:name=".menuManagement.AddFoodItemActivity" />
         <activity android:name=".menuManagement.MenuManagementActivity">
