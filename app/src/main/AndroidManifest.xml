@@ -20,12 +20,13 @@
         <activity android:name=".menuManagement.CRUDFoodActivity" />
         <activity android:name=".menuManagement.FoodListActivity" />
         <activity android:name=".menuManagement.AddFoodItemActivity" />
+
         <activity android:name=".menuManagement.MenuManagementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>
