@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Sweet Bread Shop</string>
+
     <string name="add_new_food_item">Add New Food Item</string>
     <string name="chocolate_cake">Chocolate Cake</string>
     <string name="burger_bun">Burger Bun</string>
@@ -25,7 +26,6 @@
     <string name="_80_00">80.00</string>
     <string name="quantity">Quantity</string>
 
-
     <string name="homelogo">homelogo</string>
     <string name="nacc">Create Account</string>
     <string name="signin">Sign In </string>
@@ -35,5 +35,4 @@
     <string name="tsign">Sign In</string>
     <string name="bsign">Login</string>
     <string name="CreateAcc">Create Account</string>
-
 </resources>
