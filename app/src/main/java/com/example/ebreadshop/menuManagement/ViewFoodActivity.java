@@ -41,7 +41,7 @@ public class ViewFoodActivity extends AppCompatActivity {
         //Set a value change listener for NumberPicker
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal){
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
                 //Display the newly selected number from picker
                 //tv.setText("Selected Number : " + newVal);
             }
