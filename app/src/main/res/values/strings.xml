@@ -40,4 +40,16 @@
     <string name="accpassword">Password</string>
     <string name="accrpassword">Re-enter Password</string>
     <string name="accsignup">sign up now</string>
+
+    <!-- Don't Touch -->
+    <string name="Dtime">Time</string>
+    <string name="Ddate">Date</string>
+    <string name="Dcontract_number">Telephone NO</string>
+    <string name="Daddress">Address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="Ddistricts" translatable="false">Apply Date</string>
+
 </resources>

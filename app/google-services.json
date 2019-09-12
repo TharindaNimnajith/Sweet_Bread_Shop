@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "359572179850-rbe2rhg7qgq4a34c9nvqscm06b8l9i6l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ebreadshop",
+            "certificate_hash": "77c3d9df2dedef7bc3b259e2e6fb32e871fe21bc"
+          }
+        },
+        {
           "client_id": "359572179850-3ahdmt63m7i2aj9b6d8lq76n3aq2or2h.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
