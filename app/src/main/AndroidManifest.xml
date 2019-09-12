@@ -10,23 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".order.Main2Activity"></activity>
+        <activity android:name=".order.Main2Activity" />
 
         <activity android:name=".delivery.MainActivity" />
 
-        <activity android:name=".user.CustomerLoginActivity" />
+        <activity android:name=".user.custHomeActivity" />
+        <activity android:name=".user.SignInActivity" />
+        <activity android:name=".user.CreateAccountActivity" />
 
         <activity android:name=".menuManagement.ViewFoodActivity" />
         <activity android:name=".menuManagement.CRUDFoodActivity" />
         <activity android:name=".menuManagement.FoodListActivity" />
         <activity android:name=".menuManagement.AddFoodItemActivity" />
-
         <activity android:name=".menuManagement.MenuManagementActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 </manifest>

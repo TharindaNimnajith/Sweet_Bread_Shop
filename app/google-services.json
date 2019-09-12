@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "359572179850",
+    "firebase_url": "https://sweetbreadshop.firebaseio.com",
+    "project_id": "sweetbreadshop",
+    "storage_bucket": "sweetbreadshop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359572179850:android:5ab6118d83c59d3d679673",
+        "android_client_info": {
+          "package_name": "com.example.ebreadshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359572179850-3ahdmt63m7i2aj9b6d8lq76n3aq2or2h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ebreadshop",
+            "certificate_hash": "66611d7aa1e6c60cbbd2a9ec36e437eb4b53d4ee"
+          }
+        },
+        {
+          "client_id": "359572179850-dm7nicpv8vnrfoedc7vrhmllfa56p3sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqelrKq_GDxbRgfcM8RiBP3ah3JlTb0xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359572179850-dm7nicpv8vnrfoedc7vrhmllfa56p3sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

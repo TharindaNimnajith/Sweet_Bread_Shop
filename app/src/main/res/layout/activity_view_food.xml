@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="263dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:contentDescription="@string/chocolate_cake"
             app:layout_constraintBottom_toTopOf="@+id/unit_price_"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,28 +28,26 @@
 
         <ImageView
             android:id="@+id/shopping_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="142dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="64dp"
             android:clickable="true"
             android:contentDescription="@string/chocolate_cake"
             android:focusable="true"
             android:onClick="addToCart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/qty"
             app:srcCompat="@drawable/shopping" />
 
         <NumberPicker
             android:id="@+id/qty_value_"
-            android:layout_width="72dp"
-            android:layout_height="138dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:scrollbarSize="4dp"
             android:scrollbarStyle="outsideInset"
             android:solidColor="#CCC5C5"
@@ -58,12 +56,13 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/qty"
             app:layout_constraintTop_toBottomOf="@+id/price_value_"
-            app:layout_constraintVertical_bias="0.146" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/qty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="@string/quantity"
             android:textSize="36sp"
             app:layout_constraintBottom_toTopOf="@+id/shopping_cart"
@@ -76,7 +75,7 @@
         <TextView
             android:id="@+id/price_value_"
             android:layout_width="wrap_content"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="64dp"
             android:text="@string/_80_00"
             android:textSize="36sp"
@@ -86,7 +85,7 @@
         <TextView
             android:id="@+id/title_"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="79dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="80dp"
