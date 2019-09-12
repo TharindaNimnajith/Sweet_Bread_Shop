@@ -10,20 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".myapplication.Dview"></activity>
-        <activity android:name=".myapplication.addDelivery">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".myapplication.delivery">
-
-        </activity>
+        <activity android:name=".myapplication.Dview" />
+        <activity android:name=".myapplication.addDelivery" />
+        <activity android:name=".myapplication.delivery" />
 
         <activity android:name=".order.Main2Activity" />
 
-        <activity android:name=".user.custHomeActivity" />
+        <activity android:name=".user.custHomeActivity"></activity>
         <activity android:name=".user.SignInActivity" />
         <activity android:name=".user.CreateAccountActivity" />
 
@@ -32,7 +25,10 @@
         <activity android:name=".menuManagement.FoodListActivity" />
         <activity android:name=".menuManagement.AddFoodItemActivity" />
         <activity android:name=".menuManagement.MenuManagementActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>

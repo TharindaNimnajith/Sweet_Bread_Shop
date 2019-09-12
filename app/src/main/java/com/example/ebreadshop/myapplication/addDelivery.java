@@ -1,13 +1,10 @@
 package com.example.ebreadshop.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
 
@@ -20,14 +17,14 @@ public class addDelivery extends AppCompatActivity {
 
     }
 
-    public void delivery(View view){
-        Intent i = new Intent(getApplicationContext(),delivery.class);
+    public void delivery(View view) {
+        Intent i = new Intent(getApplicationContext(), delivery.class);
         startActivity(i);
     }
 
-    public void viewDelivery(View view){
-        Intent i = new Intent(getApplicationContext(),Dview.class);
-        i.putExtra("maxid","1");
+    public void viewDelivery(View view) {
+        Intent i = new Intent(getApplicationContext(), Dview.class);
+        i.putExtra("maxid", "1");
         startActivity(i);
     }
 

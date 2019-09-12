@@ -60,7 +60,7 @@ public class delivery extends AppCompatActivity {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                maxid=(dataSnapshot.getChildrenCount());
+                maxid = (dataSnapshot.getChildrenCount());
             }
 
             @Override
@@ -97,8 +97,6 @@ public class delivery extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please ADD Delivery Date", Toast.LENGTH_SHORT).show();
 
 
-
-
                     dev.setAddress(txtaddress.getText().toString().trim());
                     dev.setDate(txtdate.getText().toString().trim());
                     dev.setApplyDate(txtdistricts.getText().toString().trim());
@@ -112,11 +110,10 @@ public class delivery extends AppCompatActivity {
 
                     //db.push().setValue(dev);
 
-                    db.child(String.valueOf(maxid+1)).setValue(dev);
+                    db.child(String.valueOf(maxid + 1)).setValue(dev);
 
                     Toast.makeText(getApplicationContext(), "your data is added", Toast.LENGTH_SHORT).show();
                     clear();
-
 
 
                 } catch (NumberFormatException e) {

@@ -10,11 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddFoodItemActivity extends AppCompatActivity {
 
@@ -22,6 +26,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
     Button btnUpload, btnCancel, btnAdd;
     DatabaseReference databaseReference;
     Product product;
+    long max_id = 0;
 
     // Method to clear all user inputs
     private void clearControls() {
@@ -49,6 +54,19 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
         product = new Product();
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                max_id = (dataSnapshot.getChildrenCount());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //
+            }
+        });
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,25 +74,40 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
                 try {
                     if (TextUtils.isEmpty(txtName.getText().toString())) {
-                        Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please Enter Product Name", Toast.LENGTH_LONG).show();
                     } else if (TextUtils.isEmpty(txtUnitPrice.getText().toString())) {
-                        Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please Enter Unit Price", Toast.LENGTH_LONG).show();
                     } else if (TextUtils.isEmpty(txtDescription.getText().toString())) {
-                        Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please Enter Description", Toast.LENGTH_LONG).show();
                     } else if (TextUtils.isEmpty(txtDiscount.getText().toString())) {
-                        Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please Enter Discount", Toast.LENGTH_LONG).show();
+                    } else if (Integer.parseInt(txtUnitPrice.getText().toString().trim()) < Integer.parseInt(txtDiscount.getText().toString().trim())) {
+                        Toast.makeText(getApplicationContext(), "Discount should be less than Unit Price", Toast.LENGTH_LONG).show();
+                        txtDiscount.setText(null);
                     }
 
                     // add photo upload required condition
                     else {
                         // take inputs from the user and assigning them to this instance (product) of the Product
+
                         product.setName(txtName.getText().toString().trim());
                         product.setDescription(txtDescription.getText().toString().trim());
-                        product.setUnitPrice(Integer.parseInt(txtUnitPrice.getText().toString().trim()));
-                        product.setDiscount(Integer.parseInt(txtDiscount.getText().toString().trim()));
+
+                        try {
+                            product.setUnitPrice(Integer.parseInt(txtUnitPrice.getText().toString().trim()));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(getApplicationContext(), "Invalid Unit Price!", Toast.LENGTH_LONG).show();
+                        }
+
+                        try {
+                            product.setDiscount(Integer.parseInt(txtDiscount.getText().toString().trim()));
+                        } catch (NumberFormatException e) {
+                            Toast.makeText(getApplicationContext(), "Invalid Discount!", Toast.LENGTH_LONG).show();
+                        }
 
                         // insert into the database
-                        databaseReference.push().setValue(product);
+                        //databaseReference.push().setValue(product);
+                        databaseReference.child(String.valueOf(max_id + 1)).setValue(product);
 
                         // provide feedback to the user via a toast
                         Toast.makeText(getApplicationContext(), "Item Added Successfully", Toast.LENGTH_LONG).show();
@@ -145,9 +178,9 @@ public class AddFoodItemActivity extends AppCompatActivity {
             }
 
             // insert into the database
-            //databaseReference.child(String.valueOf(product.getId())).setValue(product);
+            databaseReference.child(String.valueOf(product.getId())).setValue(product);
             //databaseReference.child("abc").setValue(product);
-            databaseReference.push().setValue(product);
+            //databaseReference.push().setValue(product);
 
             // provide feedback to the user via a toast
             //Context context = getApplicationContext();
@@ -165,7 +198,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-*/
+    */
 
     @Override
     protected void onStart() {

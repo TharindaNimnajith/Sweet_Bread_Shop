@@ -16,22 +16,19 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".delivery.delivery">
 
-        <ImageView
-            android:id="@+id/dimageView23"
+        <Button
+            android:id="@+id/Daddsubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:contentDescription="@string/Dcontract_number"
-            app:layout_constraintBottom_toBottomOf="@+id/Dtp2"
-            app:layout_constraintEnd_toEndOf="@+id/Dtp2"
-            app:layout_constraintHorizontal_bias="0.044"
+            android:background="@drawable/submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Dtp2"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/c" />
+            app:layout_constraintTop_toBottomOf="@+id/Ddate" />
 
         <EditText
             android:id="@+id/Dtp"
@@ -195,6 +192,23 @@
             tools:targetApi="o" />
 
         <ImageView
+            android:id="@+id/dimageView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/Dcontract_number"
+            app:layout_constraintBottom_toBottomOf="@+id/Dtp2"
+            app:layout_constraintEnd_toEndOf="@+id/Dtp2"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/Dtp2"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/c" />
+
+        <ImageView
             android:id="@+id/DimageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -271,6 +285,22 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/tim" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/name"
+            app:layout_constraintBottom_toBottomOf="@+id/Dname"
+            app:layout_constraintEnd_toEndOf="@+id/Dname"
+            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Daddress2" />
+
         <TextView
             android:id="@+id/DorderID"
             android:layout_width="291dp"
@@ -292,36 +322,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.384" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/name"
-            app:layout_constraintBottom_toBottomOf="@+id/Dname"
-            app:layout_constraintEnd_toEndOf="@+id/Dname"
-            app:layout_constraintHorizontal_bias="0.041"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Daddress2" />
-
-        <Button
-            android:id="@+id/Daddsubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/submit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Ddate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

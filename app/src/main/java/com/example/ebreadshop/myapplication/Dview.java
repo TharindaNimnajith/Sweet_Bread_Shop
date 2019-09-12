@@ -1,12 +1,11 @@
 package com.example.ebreadshop.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
 import com.google.firebase.database.DataSnapshot;
@@ -41,12 +40,11 @@ public class Dview extends AppCompatActivity {
         dev = new deliveryDB();
 
 
-
         DatabaseReference readdb = FirebaseDatabase.getInstance().getReference().child("deliveryDB").child(String.valueOf(result));
         readdb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChildren()){
+                if (dataSnapshot.hasChildren()) {
                     txtaddress.setText(dataSnapshot.child("address").getValue().toString());
                     txtdistricts.setText(dataSnapshot.child("applyDate").getValue().toString());
                     txtname.setText(dataSnapshot.child("name").getValue().toString());
@@ -54,8 +52,8 @@ public class Dview extends AppCompatActivity {
                     txttp2.setText(dataSnapshot.child("tp2").getValue().toString());
                     txttime.setText(dataSnapshot.child("time").getValue().toString());
                     txtdate.setText(dataSnapshot.child("date").getValue().toString());
-                }else{
-                    Toast.makeText(getApplicationContext(),"Nothis to display",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Nothis to display", Toast.LENGTH_SHORT).show();
                 }
             }
 
