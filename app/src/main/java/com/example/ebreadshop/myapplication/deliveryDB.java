@@ -7,6 +7,7 @@ public class deliveryDB {
 
 
 
+    private String orderID;
     private String address;
     private String applyDate;
     private String name;
@@ -15,6 +16,14 @@ public class deliveryDB {
     private String time;
     private String date;
 
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
 
     public deliveryDB() {
 
