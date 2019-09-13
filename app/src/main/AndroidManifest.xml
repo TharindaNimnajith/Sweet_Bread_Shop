@@ -12,10 +12,7 @@
 
         <activity android:name=".myapplication.Dview"></activity>
         <activity android:name=".myapplication.addDelivery">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".myapplication.delivery">
 
@@ -23,7 +20,14 @@
 
         <activity android:name=".order.Main2Activity" />
 
-        <activity android:name=".user.custHomeActivity" />
+        <activity android:name=".user.custHomeActivity" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".user.SignInActivity" />
         <activity android:name=".user.CreateAccountActivity" />
 
