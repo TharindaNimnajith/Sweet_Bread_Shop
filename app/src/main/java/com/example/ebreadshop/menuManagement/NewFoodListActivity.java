@@ -1,10 +1,8 @@
 package com.example.ebreadshop.menuManagement;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,72 +19,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuManagementActivity extends AppCompatActivity {
-
-    /*
-    //ArrayList<String> myArrayList = new ArrayList<>();
-    ArrayList<Product> myArrayList = new ArrayList<>();
-    ListView myListView;
-
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_management);
-
-        Log.i("Lifecycle", "OnCreate() invoked");
-
-
-
-        //final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
-        ProductAdapter productAdapter = new ProductAdapter(myArrayList);
-
-        myListView = findViewById(R.id.listView);
-
-        //myListView.setAdapter(myArrayAdapter);
-        myListView.setAdapter((ListAdapter) productAdapter);
-
-        databaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Product myChildValues = dataSnapshot.getValue(Product.class);
-                myArrayList.add(myChildValues);
-                myArrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                myArrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                //
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                //
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                //
-            }
-        });
-    }
-    */
+public class NewFoodListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ProductAdapter productAdapter;
+    private NewProductAdapter newProductAdapter;
     private List<Product> list;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_management);
+        setContentView(R.layout.activity_new_food_list);
 
         Log.i("Lifecycle", "OnCreate() invoked");
 
@@ -110,8 +53,8 @@ public class MenuManagementActivity extends AppCompatActivity {
                         list.add(product);
                     }
 
-                    productAdapter = new ProductAdapter(list);
-                    recyclerView.setAdapter(productAdapter);
+                    newProductAdapter = new NewProductAdapter(list);
+                    recyclerView.setAdapter(newProductAdapter);
                 }
             }
 
@@ -125,24 +68,9 @@ public class MenuManagementActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
-
-
-    public void add(View view) {
-        Intent intent = new Intent(MenuManagementActivity.this, AddFoodItemActivity.class);
-        startActivity(intent);
-    }
-
-
-    /*
-    public void crud(View view) {
-        Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
-        startActivity(intent);
-    }
-    */
-
 
     @Override
     protected void onStart() {

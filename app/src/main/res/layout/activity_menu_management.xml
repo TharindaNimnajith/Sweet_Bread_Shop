@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,148 +7,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.ebreadshop.menuManagement.MenuManagementActivity">
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".MainActivity"
-        tools:showIn="@layout/activity_menu_management">
+        android:layout_height="match_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:id="@+id/food_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@drawable/chocolate"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="crud">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:background="#99757575"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/chocolate_cake"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#fff"
-                        android:textSize="20sp" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/food_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/food_1"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/hotdog"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="crud">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginBottom="-1dp"
-                        android:background="#99757575"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/burger_bun"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#fff"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/food_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/food_2"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/cupcakes"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="crud">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:background="#99757575"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/cup_cake"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#fff"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/food_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/food_3"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/burgerbuns"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="crud">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:background="#99757575"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/burger_buns"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#fff"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/food_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_below="@id/food_4"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/milkbread"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="crud">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:background="#99757575"
-                        android:paddingTop="7dp"
-                        android:paddingBottom="7dp"
-                        android:text="@string/milk_bread"
-                        android:textAlignment="center"
-                        android:textAllCaps="true"
-                        android:textColor="#fff"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-            </RelativeLayout>
-        </ScrollView>
-    </RelativeLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_item_button"
@@ -167,6 +32,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.89"
+        app:maxImageSize="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

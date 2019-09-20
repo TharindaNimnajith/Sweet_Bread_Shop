@@ -12,7 +12,7 @@
         tools:context="com.example.ebreadshop.menuManagement.CRUDFoodActivity">
 
         <Button
-            android:id="@+id/edit_img"
+            android:id="@+id/edit_img_crud"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="24dp"
@@ -26,10 +26,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/desc_val" />
+            app:layout_constraintTop_toBottomOf="@+id/desc_val_crud" />
 
         <Button
-            android:id="@+id/cancel"
+            android:id="@+id/cancel_crud"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -45,25 +45,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/update" />
+            app:layout_constraintTop_toBottomOf="@+id/update_crud" />
 
         <Button
-            android:id="@+id/update"
+            android:id="@+id/update_crud"
             android:layout_width="177dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="24dp"
             android:background="@android:color/holo_green_dark"
-            android:onClick="update"
             android:text="@string/update"
             android:textColor="@android:color/white"
             android:textSize="28sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/delete"
+            app:layout_constraintBaseline_toBaselineOf="@+id/delete_crud"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/delete" />
+            app:layout_constraintStart_toEndOf="@+id/delete_crud" />
 
         <Button
-            android:id="@+id/delete"
+            android:id="@+id/delete_crud"
             android:layout_width="177dp"
             android:layout_height="45dp"
             android:layout_marginStart="26dp"
@@ -71,18 +70,17 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@android:color/holo_red_dark"
-            android:onClick="delete"
             android:text="@string/delete"
             android:textColor="@android:color/white"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/cancel"
-            app:layout_constraintEnd_toStartOf="@id/update"
+            app:layout_constraintBottom_toTopOf="@+id/cancel_crud"
+            app:layout_constraintEnd_toStartOf="@id/update_crud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_img"
+            app:layout_constraintTop_toBottomOf="@+id/edit_img_crud"
             app:layout_constraintVertical_bias="0.488" />
 
         <EditText
-            android:id="@+id/name_val"
+            android:id="@+id/name_val_crud"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -94,10 +92,10 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/name_crud" />
 
         <EditText
-            android:id="@+id/desc_val"
+            android:id="@+id/desc_val_crud"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -109,10 +107,10 @@
             android:text="@string/no_description"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description" />
+            app:layout_constraintTop_toBottomOf="@+id/description_crud" />
 
         <EditText
-            android:id="@+id/unit_price_val"
+            android:id="@+id/unit_price_val_crud"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -125,10 +123,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/unit_price" />
+            app:layout_constraintTop_toBottomOf="@+id/unit_price_crud" />
 
         <EditText
-            android:id="@+id/discount_val"
+            android:id="@+id/discount_val_crud"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -139,39 +137,40 @@
             android:text="@string/_20_00"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discount" />
+            app:layout_constraintTop_toBottomOf="@+id/discount_crud" />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/title_crud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="79dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="80dp"
+            android:layout_marginBottom="24dp"
             android:text="@string/chocolate_cake"
             android:textAllCaps="true"
             android:textColor="#2B278A"
             android:textSize="36sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/name_crud"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/name_crud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
             android:text="@string/name"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/name_val"
+            app:layout_constraintBottom_toTopOf="@+id/name_val_crud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title_crud"
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/discount"
+            android:id="@+id/discount_crud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -179,33 +178,33 @@
             android:layout_marginBottom="1dp"
             android:text="@string/discount"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/discount_val"
+            app:layout_constraintBottom_toTopOf="@+id/discount_val_crud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/unit_price_val" />
+            app:layout_constraintTop_toBottomOf="@+id/unit_price_val_crud" />
 
         <TextView
-            android:id="@+id/unit_price"
+            android:id="@+id/unit_price_crud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="@string/price"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/unit_price_val"
+            app:layout_constraintBottom_toTopOf="@+id/unit_price_val_crud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name_val" />
+            app:layout_constraintTop_toBottomOf="@+id/name_val_crud" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/description_crud"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="@string/description"
             android:textSize="28sp"
-            app:layout_constraintBottom_toTopOf="@+id/desc_val"
+            app:layout_constraintBottom_toTopOf="@+id/desc_val_crud"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/discount_val"
+            app:layout_constraintTop_toBottomOf="@+id/discount_val_crud"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,32 +1,66 @@
 package com.example.ebreadshop.menuManagement;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.IOException;
+import java.util.UUID;
 
 public class AddFoodItemActivity extends AppCompatActivity {
 
+    private final int PICK_IMAGE_REQUEST = 71;
     EditText txtName, txtUnitPrice, txtDiscount, txtDescription;
     Button btnUpload, btnCancel, btnAdd;
-    DatabaseReference databaseReference;
+    ImageView imageView;
+
     Product product;
+
     long max_id = 0;
+
+    String url = "";
+
+    Task<Uri> task;
+    Uri downloadUri;
+
+
+    // Database
+    DatabaseReference databaseReference;
+
+    // Storage
+    FirebaseStorage storage;
+    StorageReference storageReference;
+    private Uri filePath;
 
     // Method to clear all user inputs
     private void clearControls() {
@@ -36,12 +70,21 @@ public class AddFoodItemActivity extends AppCompatActivity {
         txtDescription.setText("");
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food_item);
 
         Log.i("Lifecycle", "OnCreate() invoked");
+
+
+        // Firebase Storage Init
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+
+        // Init View
 
         txtName = findViewById(R.id.name_val);
         txtUnitPrice = findViewById(R.id.unit_price_val);
@@ -52,9 +95,13 @@ public class AddFoodItemActivity extends AppCompatActivity {
         btnCancel = findViewById(R.id.cancel);
         btnAdd = findViewById(R.id.add_item);
 
+        imageView = findViewById(R.id.food_img);
+
+
         product = new Product();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,6 +113,16 @@ public class AddFoodItemActivity extends AppCompatActivity {
                 //
             }
         });
+
+
+        btnUpload.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+            @Override
+            public void onClick(View view) {
+                chooseImage();
+            }
+        });
+
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,26 +141,38 @@ public class AddFoodItemActivity extends AppCompatActivity {
                     } else if (Integer.parseInt(txtUnitPrice.getText().toString().trim()) < Integer.parseInt(txtDiscount.getText().toString().trim())) {
                         Toast.makeText(getApplicationContext(), "Discount should be less than Unit Price", Toast.LENGTH_LONG).show();
                         txtDiscount.setText(null);
-                    }
-
-                    // add photo upload required condition
-                    else {
+                    } else if (filePath == null) {
+                        Toast.makeText(getApplicationContext(), "Please upload an Image of the Product", Toast.LENGTH_LONG).show();
+                    } else {
                         // take inputs from the user and assigning them to this instance (product) of the Product
 
                         product.setName(txtName.getText().toString().trim());
                         product.setDescription(txtDescription.getText().toString().trim());
 
                         try {
-                            product.setUnitPrice(Integer.parseInt(txtUnitPrice.getText().toString().trim()));
+                            //product.setUnitPrice(Double.parseDouble(txtUnitPrice.getText().toString().trim()));
+                            product.setUnitPrice(txtUnitPrice.getText().toString().trim());
                         } catch (NumberFormatException e) {
                             Toast.makeText(getApplicationContext(), "Invalid Unit Price!", Toast.LENGTH_LONG).show();
                         }
 
                         try {
-                            product.setDiscount(Integer.parseInt(txtDiscount.getText().toString().trim()));
+                            //product.setDiscount(Double.parseDouble(txtDiscount.getText().toString().trim()));
+                            product.setDiscount(txtDiscount.getText().toString().trim());
                         } catch (NumberFormatException e) {
                             Toast.makeText(getApplicationContext(), "Invalid Discount!", Toast.LENGTH_LONG).show();
                         }
+
+                        uploadImg();
+
+                        //product.setUri(downloadUri);
+
+                        product.setImgURL(url);
+
+                        //product.setImgURL(product.getUri().toString());
+
+                        //product.setTask(task);
+                        //product.setImgURL(task.toString());
 
                         // insert into the database
                         //databaseReference.push().setValue(product);
@@ -126,16 +195,120 @@ public class AddFoodItemActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
+
     public void cancel(View view) {
         Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
         startActivity(intent);
     }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    public void chooseImage() {
+        Intent intent = new Intent();
+
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+
+        startActivityForResult(Intent.createChooser(intent, "Select Photo"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    public void uploadImg() {
+        if (filePath != null) {
+            /*
+            final StorageReference ref = storageRef.child("images/mountains.jpg");
+            uploadTask = ref.putFile(file);
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+
+                    // Continue with the task to get the download URL
+                    return ref.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                    } else {
+                        // Handle failures
+                        // ...
+                    }
+                }
+            });
+            */
+
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            StorageReference reference = storageReference.child("images/" + UUID.randomUUID().toString());
+            //url = reference.getDownloadUrl().toString();
+            //task = reference.getDownloadUrl();
+
+            reference.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+
+                            //task = reference.getDownloadUrl();
+                            //downloadUri = task.getResult();
+
+                            //downloadUri = reference.getDownloadUrl().getResult();
+
+                            Toast.makeText(AddFoodItemActivity.this, "Uploaded", Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddFoodItemActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+                        }
+                    });
+
+            //task = reference.getDownloadUrl();
+
+            url = reference.getDownloadUrl().toString();
+        }
+    }
+
 
     /*
     public void addItem(View view) {
@@ -200,6 +373,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
     }
     */
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -241,6 +415,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "onDestroy() invoked");
     }
+
 
     /*
     public void test(View view) {

@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="@android:color/black"
             android:text="@string/upload_an_image"
@@ -25,13 +25,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/desc_val" />
+            app:layout_constraintTop_toBottomOf="@+id/food_img" />
 
         <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="24dp"
             android:background="@android:color/holo_red_dark"
@@ -45,24 +46,22 @@
             android:topRightRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/add_item"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upload_img" />
 
         <Button
             android:id="@+id/add_item"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="28dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
             android:background="@android:color/holo_green_dark"
             android:text="@string/add_item"
             android:textColor="@android:color/white"
             android:textSize="28sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/cancel"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/cancel"
-            app:layout_constraintTop_toBottomOf="@+id/upload_img" />
+            app:layout_constraintStart_toEndOf="@+id/cancel" />
 
         <EditText
             android:id="@+id/name_val"
@@ -130,6 +129,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/basket" />
+
+        <ImageView
+            android:id="@+id/food_img"
+            android:layout_width="0dp"
+            android:layout_height="128dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/upload_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/desc_val"
+            app:layout_constraintVertical_bias="0.104"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/title"
