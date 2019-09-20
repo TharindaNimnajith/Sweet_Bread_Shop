@@ -40,6 +40,23 @@
     <string name="accpassword">Password</string>
     <string name="accrpassword">Re-enter Password</string>
     <string name="accsignup">sign up now</string>
+    <string name="admintextbtn">Admin?</string>
+    <string name="notadmintextbtn">Not Admin?</string>
+
+    <string name="hupdatename">Update Profile</string>
+    <string name="updateuname">Username</string>
+    <string name="updateemail">Email</string>
+    <string name="updatepassword">Password</string>
+    <string name="updaterpassword">Re-Enter Password</string>
+
+    <string name="updateuserbtn">Update</string>
+    <string name="deleteuserbtn">Delete</string>
+
+    <string name="adminhdname">Admin Login</string>
+    <string name="adminuname">Username</string>
+    <string name="adminpass">Password</string>
+    <string name="adminlogin">Login</string>
+
 
     <!-- Don't Touch -->
     <string name="Dtime">Time</string>
@@ -51,7 +68,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
     <string name="Ddistricts" translatable="false">Apply Date</string>
+
     <string name="img_list_row">img_list_row</string>
     <string name="shopping_cart">Shopping Cart</string>
 
+    <string name="title_activity_delivery_home">deliveryHome</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="OrderID">OrderID</string>
 </resources>

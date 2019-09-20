@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class delivery extends AppCompatActivity {
 
 
-    EditText txtaddress, txtdistricts, txtname, txttp, txttp2, txttime, txtdate;
+    EditText orderID, txtaddress, txtdistricts, txtname, txttp, txttp2, txttime, txtdate, OrderID;
     Button submit;
     DatabaseReference db;
     deliveryDB dev;
@@ -37,6 +37,7 @@ public class delivery extends AppCompatActivity {
         txttp2.setText(" ");
         txttime.setText(" ");
         txtdate.setText(" ");
+        orderID.setText(" ");
 
 
     }
@@ -53,6 +54,7 @@ public class delivery extends AppCompatActivity {
         txttp2 = findViewById(R.id.Dtp2);
         txttime = findViewById(R.id.Dtime);
         txtdate = findViewById(R.id.Ddate);
+        orderID = findViewById(R.id.orderID);
 
         submit = findViewById(R.id.Daddsubmit);
         dev = new deliveryDB();
@@ -107,6 +109,8 @@ public class delivery extends AppCompatActivity {
 
                     dev.setTime(txttime.getText().toString().trim());
                     dev.setDate(txtdate.getText().toString().trim());
+
+                    dev.setOrderID(orderID.getText().toString().trim());
 
                     //db.push().setValue(dev);
 

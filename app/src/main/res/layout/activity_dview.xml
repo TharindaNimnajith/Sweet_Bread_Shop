@@ -31,6 +31,28 @@
             app:layout_constraintTop_toBottomOf="@+id/Ddate" />
 
         <EditText
+            android:id="@+id/orderID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:autofillHints="no"
+            android:background="@drawable/rr"
+            android:ems="10"
+            android:hint="@string/OrderID"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:targetApi="o" />
+
+        <EditText
             android:id="@+id/Dtp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -192,33 +214,15 @@
             tools:targetApi="o" />
 
         <ImageView
-            android:id="@+id/dimageView23"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="8dp"
-            android:contentDescription="@string/Dcontract_number"
-            app:layout_constraintBottom_toBottomOf="@+id/Dtp2"
-            app:layout_constraintEnd_toEndOf="@+id/Dtp2"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Dtp2"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/c" />
-
-        <ImageView
             android:id="@+id/DimageView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/Daddress"
             app:layout_constraintBottom_toBottomOf="@+id/Daddress1"
-            app:layout_constraintEnd_toEndOf="@+id/Daddress1"
-            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintEnd_toStartOf="@+id/Daddress1"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/Daddress1"
             app:layout_constraintVertical_bias="0.0"
@@ -249,7 +253,7 @@
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/Dcontract_number"
             app:layout_constraintBottom_toBottomOf="@+id/Daddress2"
-            app:layout_constraintEnd_toStartOf="@+id/Ddate"
+            app:layout_constraintEnd_toStartOf="@+id/Daddress2"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/Daddress2"
@@ -291,37 +295,31 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/todo"
             android:src="@drawable/name"
             app:layout_constraintBottom_toBottomOf="@+id/Dname"
-            app:layout_constraintEnd_toEndOf="@+id/Dname"
-            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintEnd_toStartOf="@+id/Dname"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Daddress2" />
+            app:layout_constraintTop_toBottomOf="@+id/Daddress2"
+            app:layout_constraintVertical_bias="0.741" />
 
-        <TextView
-            android:id="@+id/DorderID"
-            android:layout_width="291dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="185dp"
-            android:layout_marginTop="57dp"
-            android:layout_marginEnd="167dp"
-            android:layout_marginBottom="54dp"
-            android:background="@drawable/rr"
-            android:lineSpacingExtra="8sp"
-            android:text="@string/title_item_detail"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="24sp"
-            android:typeface="serif"
-            app:layout_constraintBottom_toTopOf="@+id/Daddress1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
+        <ImageView
+            android:id="@+id/dimageView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/Dcontract_number"
+            app:layout_constraintBottom_toBottomOf="@+id/Dtp2"
+            app:layout_constraintEnd_toStartOf="@+id/Dtp2"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.384" />
+            app:layout_constraintTop_toTopOf="@+id/Dtp2"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/c" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

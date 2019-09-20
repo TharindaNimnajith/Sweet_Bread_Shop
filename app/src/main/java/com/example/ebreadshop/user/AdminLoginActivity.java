@@ -7,69 +7,49 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
-import com.example.ebreadshop.menuManagement.NewFoodListActivity;
-import com.example.ebreadshop.user.Model.user;
+import com.example.ebreadshop.menuManagement.MenuManagementActivity;
+import com.example.ebreadshop.user.Model.admin;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class SignInActivity extends AppCompatActivity {
+public class AdminLoginActivity extends AppCompatActivity {
 
-    private EditText InputUsername, InputPassword;
-    private TextView adminbtn1;
-    private Button signinbtn;
+    private EditText adminuname, adminpass;
+    private Button login;
     private ProgressDialog loadingBar;
-    private String parentDbName = "Users";
-
+    private String parentDbName = "Admin";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_admin_login);
 
-        signinbtn = findViewById(R.id.bsign);
-        InputUsername = findViewById(R.id.signnm);
-        InputPassword = findViewById(R.id.signpwd);
-        adminbtn1 = findViewById(R.id.admintextbtn);
+        adminuname = findViewById(R.id.adminuname);
+        adminpass = findViewById(R.id.adminpass);
+        login = findViewById(R.id.adminlogin);
         loadingBar = new ProgressDialog(this);
 
-        signinbtn.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginUser();
+                LoginToAdmin();
             }
         });
 
-        adminbtn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GotoAdmin();
-
-
-            }
-        });
-
-
     }
 
-    private void GotoAdmin() {
-        Intent intent = new Intent(SignInActivity.this, AdminLoginActivity.class);
-        startActivity(intent);
-
-    }
-
-    private void LoginUser() {
-        String name = InputUsername.getText().toString();
-        String password = InputPassword.getText().toString();
+    public void LoginToAdmin() {
+        String name = adminuname.getText().toString();
+        String password = adminpass.getText().toString();
 
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Please Enter Your name .. ", Toast.LENGTH_SHORT).show();
@@ -86,8 +66,6 @@ public class SignInActivity extends AppCompatActivity {
 
 
         }
-
-
     }
 
 
@@ -100,21 +78,21 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(parentDbName).child(name).exists()) {
-                    user usersData = dataSnapshot.child(parentDbName).child(name).getValue(user.class);
+                    admin adminsData = dataSnapshot.child(parentDbName).child(name).getValue(admin.class);
 
-                    if (usersData.getName().equals(name)) {
-                        if (usersData.getPassword().equals(password)) {
-                            Toast.makeText(SignInActivity.this, "Logged in Successfully...", Toast.LENGTH_SHORT).show();
+                    if (adminsData.getName().equals(name)) {
+                        if (adminsData.getPassword().equals(password)) {
+                            Toast.makeText(AdminLoginActivity.this, "Logged in Successfully...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
-                            Intent intent = new Intent(SignInActivity.this, NewFoodListActivity.class);
+                            Intent intent = new Intent(AdminLoginActivity.this, MenuManagementActivity.class);
                             startActivity(intent);
                         }
                     }
                 } else {
-                    Toast.makeText(SignInActivity.this, "Account with this " + name + "name do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "Account with this " + name + "name do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(SignInActivity.this, "You need to create a new Account.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "You need to create a new Account.", Toast.LENGTH_SHORT).show();
 
                 }
             }
@@ -127,16 +105,4 @@ public class SignInActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 }
-
-

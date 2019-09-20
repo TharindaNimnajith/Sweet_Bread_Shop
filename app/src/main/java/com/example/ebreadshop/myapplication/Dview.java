@@ -16,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Dview extends AppCompatActivity {
 
-    EditText txtaddress, txtdistricts, txtname, txttp, txttp2, txttime, txtdate;
+    EditText orderID, txtaddress, txtdistricts, txtname, txttp, txttp2, txttime, txtdate;
     deliveryDB dev;
 
     @Override
@@ -35,9 +35,11 @@ public class Dview extends AppCompatActivity {
         txttp2 = findViewById(R.id.Dtp2);
         txttime = findViewById(R.id.Dtime);
         txtdate = findViewById(R.id.Ddate);
+        orderID = findViewById(R.id.orderID);
 
 
         dev = new deliveryDB();
+
 
 
         DatabaseReference readdb = FirebaseDatabase.getInstance().getReference().child("deliveryDB").child(String.valueOf(result));
@@ -45,6 +47,7 @@ public class Dview extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()) {
+                    orderID.setText(dataSnapshot.child("orderID").getValue().toString());
                     txtaddress.setText(dataSnapshot.child("address").getValue().toString());
                     txtdistricts.setText(dataSnapshot.child("applyDate").getValue().toString());
                     txtname.setText(dataSnapshot.child("name").getValue().toString());

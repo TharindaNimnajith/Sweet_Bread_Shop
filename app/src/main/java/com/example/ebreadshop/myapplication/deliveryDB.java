@@ -3,6 +3,7 @@ package com.example.ebreadshop.myapplication;
 public class deliveryDB {
 
 
+    private String orderID;
     private String address;
     private String applyDate;
     private String name;
@@ -12,9 +13,18 @@ public class deliveryDB {
     private String date;
 
 
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
     public deliveryDB() {
 
     }
+
 
 
     public String getApplyDate() {
@@ -27,10 +37,6 @@ public class deliveryDB {
 
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public long getTp() {
@@ -48,6 +54,11 @@ public class deliveryDB {
     public void setTp2(long tp2) {
         this.tp2 = tp2;
     }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 
     public String getName() {
         return name;
