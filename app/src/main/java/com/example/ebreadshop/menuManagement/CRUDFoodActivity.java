@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,8 +22,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.user.custHomeActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,22 +41,25 @@ import java.util.UUID;
 
 public class CRUDFoodActivity extends AppCompatActivity {
 
+    private TextView tvTitle;
+    private EditText etName, etUnitPrice, etDiscount, etDescription;
+    private Button btnEditImage, btnCancel, btnUpdate, btnDelete;
+    private ImageView imageView;
+
+    private Product product;
+    private String url = "";
+
     private final int PICK_IMAGE_REQUEST = 71;
-    TextView tvTitle;
-    EditText etName, etUnitPrice, etDiscount, etDescription;
-    Button btnEditImage, btnCancel, btnUpdate, btnDelete;
-    ImageView imageView;
-    Product product;
-    String url = "";
+
     // Database
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
-
-    // Firebase
     // Storage
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
     private Uri filePath;
+
 
     // Method to clear all user inputs
     private void clearControls() {
@@ -218,6 +224,22 @@ public class CRUDFoodActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.signout) {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent intent = new Intent(getApplicationContext(), custHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

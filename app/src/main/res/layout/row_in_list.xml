@@ -15,6 +15,7 @@
         android:background="@color/colorAccent"
         android:fadingEdge="horizontal|vertical"
         android:gravity="center"
+        android:onClick="onAdminRowClick"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +28,5 @@
             android:layout_height="wrap_content"
             android:text="@string/name"
             android:textSize="50sp" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

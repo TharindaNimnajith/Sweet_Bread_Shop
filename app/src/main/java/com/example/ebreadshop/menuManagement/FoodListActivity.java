@@ -24,11 +24,13 @@ public class FoodListActivity extends AppCompatActivity {
         Log.i("Lifecycle", "OnCreate() invoked");
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -45,10 +47,12 @@ public class FoodListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void buy(View view) {
         Intent intent = new Intent(FoodListActivity.this, ViewFoodActivity.class);
         startActivity(intent);
     }
+
 
     @Override
     protected void onStart() {

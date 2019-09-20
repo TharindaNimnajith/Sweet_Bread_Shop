@@ -1,8 +1,12 @@
 package com.example.ebreadshop.menuManagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.user.custHomeActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +29,8 @@ public class NewFoodListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private NewProductAdapter newProductAdapter;
+    private LinearLayout linearLayout;
+
     private List<Product> list;
 
 
@@ -37,6 +45,8 @@ public class NewFoodListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        linearLayout = findViewById(R.id.new_food_row);
 
         list = new ArrayList<>();
 
@@ -63,6 +73,23 @@ public class NewFoodListActivity extends AppCompatActivity {
                 //
             }
         });
+
+
+        /*
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewFoodListActivity.this, ViewFoodActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
+    }
+
+
+    public void onRowClick(View view) {
+        Intent intent = new Intent(NewFoodListActivity.this, ViewFoodActivity.class);
+        startActivity(intent);
     }
 
 
@@ -71,6 +98,23 @@ public class NewFoodListActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.signout) {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent intent = new Intent(getApplicationContext(), custHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onStart() {

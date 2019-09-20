@@ -15,7 +15,6 @@
         <activity android:name=".myapplication.delivery" />
 
         <activity android:name=".order.Main2Activity" />
-
         <activity android:name=".user.custHomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,11 +29,9 @@
         <activity android:name=".menuManagement.CRUDFoodActivity" />
         <activity android:name=".menuManagement.FoodListActivity" />
         <activity android:name=".menuManagement.NewFoodListActivity">
-
         </activity>
         <activity android:name=".menuManagement.AddFoodItemActivity" />
         <activity android:name=".menuManagement.MenuManagementActivity">
-
         </activity>
     </application>
 

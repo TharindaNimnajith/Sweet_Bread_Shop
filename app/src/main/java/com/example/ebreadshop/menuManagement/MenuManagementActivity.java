@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.user.custHomeActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +30,7 @@ public class MenuManagementActivity extends AppCompatActivity {
     /*
     //ArrayList<String> myArrayList = new ArrayList<>();
     ArrayList<Product> myArrayList = new ArrayList<>();
+
     ListView myListView;
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
@@ -36,7 +41,6 @@ public class MenuManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_management);
 
         Log.i("Lifecycle", "OnCreate() invoked");
-
 
 
         //final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
@@ -78,8 +82,11 @@ public class MenuManagementActivity extends AppCompatActivity {
     }
     */
 
+
     private RecyclerView recyclerView;
     private ProductAdapter productAdapter;
+    private LinearLayout linearLayout;
+
     private List<Product> list;
 
 
@@ -94,6 +101,8 @@ public class MenuManagementActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        linearLayout = findViewById(R.id.food_row);
 
         list = new ArrayList<>();
 
@@ -120,6 +129,23 @@ public class MenuManagementActivity extends AppCompatActivity {
                 //
             }
         });
+
+
+        /*
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
+    }
+
+
+    public void onAdminRowClick(View view) {
+        Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
+        startActivity(intent);
     }
 
 
@@ -127,6 +153,22 @@ public class MenuManagementActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.signout) {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent intent = new Intent(getApplicationContext(), custHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

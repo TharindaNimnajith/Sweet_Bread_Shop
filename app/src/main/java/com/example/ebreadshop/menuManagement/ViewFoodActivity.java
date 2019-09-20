@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.user.custHomeActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ViewFoodActivity extends AppCompatActivity {
 
@@ -49,11 +53,13 @@ public class ViewFoodActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
+
 
     public void addToCart(View view) {
         Intent intent = new Intent(ViewFoodActivity.this, FoodListActivity.class);
@@ -67,6 +73,23 @@ public class ViewFoodActivity extends AppCompatActivity {
         startActivity(intent);
         toast.show();
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.signout) {
+            FirebaseAuth.getInstance().signOut();
+
+            Intent intent = new Intent(getApplicationContext(), custHomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onStart() {
