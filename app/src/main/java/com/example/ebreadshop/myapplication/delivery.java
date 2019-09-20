@@ -49,10 +49,11 @@ public class delivery extends AppCompatActivity {
         txttime = findViewById(R.id.Dtime);
         txtdate = findViewById(R.id.Ddate);
         orderID = findViewById(R.id.orderID);
-
         submit = findViewById(R.id.Daddsubmit);
+
         dev = new deliveryDB();
         db = FirebaseDatabase.getInstance().getReference().child("deliveryDB");
+
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

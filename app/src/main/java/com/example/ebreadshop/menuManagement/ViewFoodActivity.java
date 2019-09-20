@@ -27,21 +27,28 @@ public class ViewFoodActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "OnCreate() invoked");
 
+
         //Get the widgets reference from XML layout
         final TextView tv = findViewById(R.id.unit_price);
         NumberPicker np = findViewById(R.id.qty_value_);
 
+
         //Set TextView text color
         //tv.setTextColor(Color.parseColor("#ffd32b3b"));
 
+
         //Populate NumberPicker values from minimum and maximum value range
+
         //Set the minimum value of NumberPicker
         np.setMinValue(1);
+
         //Specify the maximum value/number of NumberPicker
         np.setMaxValue(10);
 
+
         //Gets whether the selector wheel wraps when reaching the min/max value.
         np.setWrapSelectorWheel(true);
+
 
         //Set a value change listener for NumberPicker
         np.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {

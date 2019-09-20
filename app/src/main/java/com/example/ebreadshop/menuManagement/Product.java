@@ -6,8 +6,8 @@ import com.google.android.gms.tasks.Task;
 
 public class Product {
 
-    // private static int n = 0;
-    // private int id;
+    //private static int n = 0;
+    //private int id;
 
     private String name;
 

@@ -154,11 +154,14 @@ public class CRUDFoodActivity extends AppCompatActivity {
                         if (dataSnapshot.hasChild("1")) {
                             try {
                                 product.setName(etName.getText().toString().trim());
+
                                 //product.setUnitPrice(Double.parseDouble(etUnitPrice.getText().toString().trim()));
                                 //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
                                 product.setUnitPrice(etUnitPrice.getText().toString().trim());
                                 product.setDiscount(etDiscount.getText().toString().trim());
+
                                 product.setDescription(etDescription.getText().toString().trim());
+
 
                                 uploadImg();
 
@@ -168,6 +171,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                 databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child("1");
 
                                 databaseReference.setValue(product);
+
                                 clearControls();
 
                                 Toast.makeText(getApplicationContext(), "Data update Successfully", Toast.LENGTH_LONG).show();
@@ -199,10 +203,12 @@ public class CRUDFoodActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.hasChildren()) {
                             tvTitle.setText(dataSnapshot.child("name").getValue().toString());
+
                             etName.setText(dataSnapshot.child("name").getValue().toString());
                             etUnitPrice.setText(dataSnapshot.child("unitPrice").getValue().toString());
                             etDiscount.setText(dataSnapshot.child("discount").getValue().toString());
                             etDescription.setText(dataSnapshot.child("description").getValue().toString());
+
                             //image
                         } else {
                             Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();

@@ -53,14 +53,16 @@ public class AddFoodItemActivity extends AppCompatActivity {
     private Uri downloadUri;
 
     private long max_id = 0;
+    private String id = "";
+
     private final int PICK_IMAGE_REQUEST = 71;
 
     // Database
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
     // Storage
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
     private Uri filePath;
 
@@ -141,7 +143,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Please Enter Description", Toast.LENGTH_LONG).show();
                     } else if (TextUtils.isEmpty(txtDiscount.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "Please Enter Discount", Toast.LENGTH_LONG).show();
-                    } else if (Integer.parseInt(txtUnitPrice.getText().toString().trim()) < Integer.parseInt(txtDiscount.getText().toString().trim())) {
+                    } else if (Double.parseDouble(txtUnitPrice.getText().toString().trim()) < Double.parseDouble(txtDiscount.getText().toString().trim())) {
                         Toast.makeText(getApplicationContext(), "Discount should be less than Unit Price", Toast.LENGTH_LONG).show();
                         txtDiscount.setText(null);
                     } else if (filePath == null) {
@@ -166,6 +168,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Invalid Discount!", Toast.LENGTH_LONG).show();
                         }
 
+
                         uploadImg();
 
                         //product.setUri(downloadUri);
@@ -177,15 +180,23 @@ public class AddFoodItemActivity extends AppCompatActivity {
                         //product.setTask(task);
                         //product.setImgURL(task.toString());
 
+
                         // insert into the database
+
                         //databaseReference.push().setValue(product);
-                        databaseReference.child(String.valueOf(max_id + 1)).setValue(product);
+                        //databaseReference.child(String.valueOf(max_id + 1)).setValue(product);
+
+                        id = "P" + (max_id + 1);
+                        databaseReference.child(id).setValue(product);
+
 
                         // provide feedback to the user via a toast
                         Toast.makeText(getApplicationContext(), "Item Added Successfully", Toast.LENGTH_LONG).show();
 
+
                         // clear all user inputs
                         clearControls();
+
 
                         // navigate to menu management activity
                         Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
