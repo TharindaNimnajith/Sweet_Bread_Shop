@@ -19,17 +19,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class delivery extends AppCompatActivity {
 
-
     EditText orderID, txtaddress, txtdistricts, txtname, txttp, txttp2, txttime, txtdate, OrderID;
     Button submit;
     DatabaseReference db;
     deliveryDB dev;
     long maxid = 0;
 
-
     private void clear() {
-
-
         txtaddress.setText(" ");
         txtdistricts.setText(" ");
         txtname.setText(" ");
@@ -38,8 +34,6 @@ public class delivery extends AppCompatActivity {
         txttime.setText(" ");
         txtdate.setText(" ");
         orderID.setText(" ");
-
-
     }
 
     @Override
@@ -74,8 +68,6 @@ public class delivery extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 try {
                     if (TextUtils.isEmpty(txtaddress.getText().toString()))
                         Toast.makeText(getApplicationContext(), "Please ADD your Address", Toast.LENGTH_SHORT).show();
@@ -118,16 +110,10 @@ public class delivery extends AppCompatActivity {
 
                     Toast.makeText(getApplicationContext(), "your data is added", Toast.LENGTH_SHORT).show();
                     clear();
-
-
                 } catch (NumberFormatException e) {
                     Toast.makeText(getApplicationContext(), "Invalid ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
-
-
 }

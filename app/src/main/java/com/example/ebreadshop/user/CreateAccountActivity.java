@@ -25,11 +25,9 @@ import java.util.HashMap;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
-
     private Button signup;
     private EditText inputUname, inputEmail, inputPassword, inputrpassword;
     private ProgressDialog loadingBar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +49,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 CreateAccount();
             }
         });
-
     }
 
     private void CreateAccount() {
@@ -75,11 +72,8 @@ public class CreateAccountActivity extends AppCompatActivity {
             loadingBar.show();
 
             ValidateEmail(name, email, password, rpassword);
-
         }
-
     }
-
 
     private void ValidateEmail(final String name, final String email, final String paswword, String rpassword) {
         final DatabaseReference RootRef;
@@ -108,10 +102,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                                         loadingBar.dismiss();
                                         Toast.makeText(CreateAccountActivity.this, "Network Error : Please try again. ", Toast.LENGTH_SHORT).show();
                                     }
-
                                 }
                             });
-
                 } else {
                     Toast.makeText(CreateAccountActivity.this, "This" + name + "Already exists . ", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
@@ -121,7 +113,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                     Intent intent = new Intent(CreateAccountActivity.this, custHomeActivity.class);
                     startActivity(intent);
                 }
-
             }
 
             @Override
@@ -129,15 +120,5 @@ public class CreateAccountActivity extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-
-
-
-
-
-
-
 }

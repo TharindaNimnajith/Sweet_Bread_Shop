@@ -44,7 +44,6 @@ public class AdminLoginActivity extends AppCompatActivity {
                 LoginToAdmin();
             }
         });
-
     }
 
     public void LoginToAdmin() {
@@ -63,11 +62,8 @@ public class AdminLoginActivity extends AppCompatActivity {
             loadingBar.show();
 
             AllowAccessToAccount(name, password);
-
-
         }
     }
-
 
     private void AllowAccessToAccount(final String name, final String password) {
 
@@ -93,7 +89,6 @@ public class AdminLoginActivity extends AppCompatActivity {
                     Toast.makeText(AdminLoginActivity.this, "Account with this " + name + "name do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                     Toast.makeText(AdminLoginActivity.this, "You need to create a new Account.", Toast.LENGTH_SHORT).show();
-
                 }
             }
 
@@ -102,7 +97,5 @@ public class AdminLoginActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }

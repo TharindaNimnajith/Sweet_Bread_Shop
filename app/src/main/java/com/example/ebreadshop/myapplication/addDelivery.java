@@ -14,7 +14,6 @@ public class addDelivery extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_delivery);
-
     }
 
     public void delivery(View view) {
@@ -27,6 +26,4 @@ public class addDelivery extends AppCompatActivity {
         i.putExtra("maxid", "1");
         startActivity(i);
     }
-
-
 }

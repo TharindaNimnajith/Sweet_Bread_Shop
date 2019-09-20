@@ -41,7 +41,6 @@ public class Dview extends AppCompatActivity {
         dev = new deliveryDB();
 
 
-
         DatabaseReference readdb = FirebaseDatabase.getInstance().getReference().child("deliveryDB").child(String.valueOf(result));
         readdb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

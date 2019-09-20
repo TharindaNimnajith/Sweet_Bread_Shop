@@ -53,18 +53,13 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GotoAdmin();
-
-
             }
         });
-
-
     }
 
     private void GotoAdmin() {
         Intent intent = new Intent(SignInActivity.this, AdminLoginActivity.class);
         startActivity(intent);
-
     }
 
     private void LoginUser() {
@@ -83,11 +78,7 @@ public class SignInActivity extends AppCompatActivity {
             loadingBar.show();
 
             AllowAccessToAccount(name, password);
-
-
         }
-
-
     }
 
 
@@ -124,19 +115,5 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-
-
-
-
-
-
-
-
-
-
 }
-
-

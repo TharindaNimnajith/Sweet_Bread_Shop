@@ -19,7 +19,6 @@ public class custHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cust_home);
 
-
         signup = findViewById(R.id.nacc);
         signin = findViewById(R.id.signin);
 
