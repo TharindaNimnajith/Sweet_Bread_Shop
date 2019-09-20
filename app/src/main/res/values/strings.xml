@@ -40,6 +40,25 @@
     <string name="accpassword">Password</string>
     <string name="accrpassword">Re-enter Password</string>
     <string name="accsignup">sign up now</string>
+    <string name="admintextbtn">Admin?</string>
+    <string name="notadmintextbtn">Not Admin?</string>
+
+    <string name="hupdatename">Update Profile</string>
+    <string name="updateuname">Username</string>
+    <string name="updateemail">Email</string>
+    <string name="updatepassword">Password</string>
+    <string name="updaterpassword">Re-Enter Password</string>
+
+    <string name="updateuserbtn">Update</string>
+    <string name="deleteuserbtn">Delete</string>
+
+    <string name="adminhdname">Admin Login</string>
+    <string name="adminuname">Username</string>
+    <string name="adminpass">Password</string>
+    <string name="adminlogin">Login</string>
+
+
+
 
     <!-- Don't Touch -->
     <string name="Dtime">Time</string>

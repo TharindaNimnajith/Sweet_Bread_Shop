@@ -117,7 +117,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                                   {
                                         if (task.isSuccessful())
                                         {
-                                            Toast.makeText(CreateAccountActivity.this, "Congratulations, your account hs been created.", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(CreateAccountActivity.this, "Congratulations, your account has been created.", Toast.LENGTH_SHORT).show();
                                             loadingBar.dismiss();
 
                                             Intent intent = new Intent(CreateAccountActivity.this,SignInActivity.class);
