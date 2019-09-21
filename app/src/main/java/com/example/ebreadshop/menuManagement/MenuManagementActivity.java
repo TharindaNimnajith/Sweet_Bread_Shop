@@ -42,7 +42,6 @@ public class MenuManagementActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "OnCreate() invoked");
 
-
         //final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, myArrayList);
         ProductAdapter productAdapter = new ProductAdapter(myArrayList);
 
@@ -82,13 +81,28 @@ public class MenuManagementActivity extends AppCompatActivity {
     }
     */
 
-
     private RecyclerView recyclerView;
-    private ProductAdapter productAdapter;
     private LinearLayout linearLayout;
+
+    private ProductAdapter productAdapter;
+
+    //private Context context;
 
     private List<Product> list;
 
+    /*
+    public interface DataStatus {
+        void DataIsLoaded(List<Product> products, List<String> keys);
+        void DataIsInserted();
+        void DataIsUpdated();
+        void DataIsDeleted();
+    }
+
+    public DataStatus getDataStatus() {
+        DataStatus dataStatus = null;
+        return dataStatus;
+    } 
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +110,6 @@ public class MenuManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_management);
 
         Log.i("Lifecycle", "OnCreate() invoked");
-
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -106,20 +119,47 @@ public class MenuManagementActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-
+        //final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Product");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot npsnapshot : dataSnapshot.getChildren()) {
-                        Product product = npsnapshot.getValue(Product.class);
-                        //= npsnapshot.getKey();
+                    //List<String> keys = new ArrayList<>();
+
+                    for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
+                        //keys.add(keyNode.getKey());
+
+                        Product product = keyNode.getValue(Product.class);
                         list.add(product);
                     }
 
+                    //final DataStatus dataStatus = getDataStatus();
+                    //dataStatus.DataIsLoaded(list, keys);
+
+                    //productAdapter = new ProductAdapter(list, keys);
                     productAdapter = new ProductAdapter(list);
+
+                    productAdapter.setListener(new ProductAdapter.ItemClickListener() {
+                        @Override
+                        public void onItemClick(Product product) {
+                            Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
+
+                            // passing data
+                            intent.putExtra("key", databaseReference.getKey());
+                            intent.putExtra("name", product.getName());
+                            intent.putExtra("unitPrice", product.getUnitPrice());
+                            intent.putExtra("discount", product.getDiscount());
+                            intent.putExtra("description", product.getDescription());
+                            //imageview to show image
+                            //image url for update image
+
+                            startActivity(intent);
+                        }
+                    });
+
+                    //recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(productAdapter);
                 }
             }
@@ -129,7 +169,6 @@ public class MenuManagementActivity extends AppCompatActivity {
                 //
             }
         });
-
 
         /*
         linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -142,19 +181,18 @@ public class MenuManagementActivity extends AppCompatActivity {
         */
     }
 
-
+    /*
     public void onAdminRowClick(View view) {
         Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
         startActivity(intent);
     }
-
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -171,12 +209,10 @@ public class MenuManagementActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void add(View view) {
         Intent intent = new Intent(MenuManagementActivity.this, AddFoodItemActivity.class);
         startActivity(intent);
     }
-
 
     /*
     public void crud(View view) {
@@ -184,7 +220,6 @@ public class MenuManagementActivity extends AppCompatActivity {
         startActivity(intent);
     }
     */
-
 
     @Override
     protected void onStart() {

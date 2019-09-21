@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -28,11 +27,27 @@ import java.util.List;
 public class NewFoodListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private NewProductAdapter newProductAdapter;
     private LinearLayout linearLayout;
+
+    private NewProductAdapter newProductAdapter;
+
+    //private Context context;
 
     private List<Product> list;
 
+    /*
+    public DataStatus getDataStatus() {
+        DataStatus dataStatus = null;
+        return dataStatus;
+    }
+
+    public interface DataStatus {
+        void DataIsLoaded(List<Product> products, List<String> keys);
+        void DataIsInserted();
+        void DataIsUpdated();
+        void DataIsDeleted();
+    }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +55,6 @@ public class NewFoodListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_food_list);
 
         Log.i("Lifecycle", "OnCreate() invoked");
-
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -50,20 +64,47 @@ public class NewFoodListActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Product");
+        //final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    for (DataSnapshot npsnapshot : dataSnapshot.getChildren()) {
-                        Product product = npsnapshot.getValue(Product.class);
-                        //= npsnapshot.getKey();
+                    //List<String> keys = new ArrayList<>();
+
+                    for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
+                        //keys.add(keyNode.getKey());
+
+                        Product product = keyNode.getValue(Product.class);
                         list.add(product);
                     }
 
+                    //final DataStatus dataStatus = getDataStatus();
+                    //dataStatus.DataIsLoaded(list, keys);
+
+                    //newProductAdapter = new NewProductAdapter(list, keys);
                     newProductAdapter = new NewProductAdapter(list);
+
+                    newProductAdapter.setListener(new NewProductAdapter.ItemClickListener() {
+                        @Override
+                        public void onItemClick(Product product) {
+                            Intent intent = new Intent(NewFoodListActivity.this, ViewFoodActivity.class);
+
+                            //passing data
+                            intent.putExtra("key", databaseReference.getKey());
+                            intent.putExtra("name", product.getName());
+                            intent.putExtra("unitPrice", product.getUnitPrice());
+                            intent.putExtra("discount", product.getDiscount());
+                            intent.putExtra("description", product.getDescription());
+                            //imageview to show image
+                            //image url for update image
+
+                            startActivity(intent);
+                        }
+                    });
+
+                    //recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(newProductAdapter);
                 }
             }
@@ -73,7 +114,6 @@ public class NewFoodListActivity extends AppCompatActivity {
                 //
             }
         });
-
 
         /*
         linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -86,19 +126,18 @@ public class NewFoodListActivity extends AppCompatActivity {
         */
     }
 
-
+    /*
     public void onRowClick(View view) {
         Intent intent = new Intent(NewFoodListActivity.this, ViewFoodActivity.class);
         startActivity(intent);
     }
-
+    */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -114,7 +153,6 @@ public class NewFoodListActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     protected void onStart() {

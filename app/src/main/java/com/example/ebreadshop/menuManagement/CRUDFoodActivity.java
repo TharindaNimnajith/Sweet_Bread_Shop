@@ -41,34 +41,37 @@ import java.util.UUID;
 
 public class CRUDFoodActivity extends AppCompatActivity {
 
+    private final int PICK_IMAGE_REQUEST = 71;
+
     private TextView tvTitle;
     private EditText etName, etUnitPrice, etDiscount, etDescription;
     private Button btnEditImage, btnCancel, btnUpdate, btnDelete;
     private ImageView imageView;
 
     private Product product;
+
     private String url = "";
-
-    private final int PICK_IMAGE_REQUEST = 71;
-
-    // Database
-    private DatabaseReference databaseReference;
-
-    // Storage
-    private FirebaseStorage storage;
-    private StorageReference storageReference;
 
     private Uri filePath;
 
+    private DatabaseReference databaseReference;
 
-    // Method to clear all user inputs
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
+    private String key;
+    private String name;
+    private String unitPrice;
+    private String discount;
+    private String description;
+
+    // method to clear all user inputs
     private void clearControls() {
         etName.setText("");
         etUnitPrice.setText("");
         etDiscount.setText("");
         etDescription.setText("");
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +80,8 @@ public class CRUDFoodActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "OnCreate() invoked");
 
-
-        // Firebase Storage Init
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-
-        // Init View
 
         etName = findViewById(R.id.name_val_crud);
         etUnitPrice = findViewById(R.id.unit_price_val_crud);
@@ -99,11 +97,23 @@ public class CRUDFoodActivity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.title_crud);
 
+        // data
+        key = getIntent().getStringExtra("key");
+        name = getIntent().getStringExtra("name");
+        unitPrice = getIntent().getStringExtra("unitPrice");
+        discount = getIntent().getStringExtra("discount");
+        description = getIntent().getStringExtra("description");
 
         product = new Product();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
 
+        // display details
+        tvTitle.setText(name);
+        etName.setText(name);
+        etUnitPrice.setText(unitPrice);
+        etDiscount.setText(discount);
+        etDescription.setText(description);
 
         btnEditImage.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
@@ -113,19 +123,19 @@ public class CRUDFoodActivity extends AppCompatActivity {
             }
         });
 
-
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Product");
+                //DatabaseReference updRef = FirebaseDatabase.getInstance().getReference("Product");
 
                 delRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild("1")) {
-                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Student").child("1");
-
+                        if (dataSnapshot.hasChild(key)) {
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(key);
                             databaseReference.removeValue();
+
                             clearControls();
 
                             Toast.makeText(getApplicationContext(), "Data Deleted Successfully", Toast.LENGTH_LONG).show();
@@ -147,29 +157,28 @@ public class CRUDFoodActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Product");
+                //DatabaseReference updRef = FirebaseDatabase.getInstance().getReference("Product");
 
                 updRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild("1")) {
+                        if (dataSnapshot.hasChild(key)) {
                             try {
                                 product.setName(etName.getText().toString().trim());
 
                                 //product.setUnitPrice(Double.parseDouble(etUnitPrice.getText().toString().trim()));
-                                //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
                                 product.setUnitPrice(etUnitPrice.getText().toString().trim());
+
+                                //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
                                 product.setDiscount(etDiscount.getText().toString().trim());
 
                                 product.setDescription(etDescription.getText().toString().trim());
-
 
                                 uploadImg();
 
                                 product.setImgURL(url);
 
-
-                                databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child("1");
-
+                                databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(key);
                                 databaseReference.setValue(product);
 
                                 clearControls();
@@ -190,7 +199,6 @@ public class CRUDFoodActivity extends AppCompatActivity {
                 });
             }
         });
-
 
         /*
         btnShow.setOnClickListener(new View.OnClickListener() {
@@ -225,13 +233,11 @@ public class CRUDFoodActivity extends AppCompatActivity {
         */
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -248,12 +254,10 @@ public class CRUDFoodActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void cancel(View view) {
         Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
         startActivity(intent);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     public void chooseImage() {
@@ -274,13 +278,12 @@ public class CRUDFoodActivity extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
+                //imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-
 
     public void uploadImg() {
         if (filePath != null) {
@@ -317,7 +320,6 @@ public class CRUDFoodActivity extends AppCompatActivity {
         }
     }
 
-
     /*
     public void update(View view) {
         Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
@@ -332,7 +334,6 @@ public class CRUDFoodActivity extends AppCompatActivity {
         toast.show();
     }
 
-
     public void delete(View view) {
         Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
 
@@ -346,7 +347,6 @@ public class CRUDFoodActivity extends AppCompatActivity {
         toast.show();
     }
     */
-
 
     @Override
     protected void onStart() {
