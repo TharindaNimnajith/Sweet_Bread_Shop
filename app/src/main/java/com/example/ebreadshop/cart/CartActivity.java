@@ -1,4 +1,4 @@
-package com.example.ebreadshop;
+package com.example.ebreadshop.cart;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.ebreadshop.R;
 
 public class CartActivity extends AppCompatActivity {
 
