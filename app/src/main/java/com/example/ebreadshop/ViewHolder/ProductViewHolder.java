@@ -29,7 +29,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
     }
 
     public void setItemClickListener(ItemClickListener listener){
-        this.listener = listener
+        this.listener = listener;
     }
 
 
