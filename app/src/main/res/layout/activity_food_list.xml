@@ -7,16 +7,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.ebreadshop.menuManagement.FoodListActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".MainActivity"
-        tools:showIn="@layout/activity_menu_management">
-
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context=".MainActivity"
+            tools:showIn="@layout/activity_menu_management"
+            android:background="@android:color/background_light">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -148,5 +145,4 @@
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

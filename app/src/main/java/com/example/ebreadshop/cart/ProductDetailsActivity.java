@@ -29,7 +29,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        addToCartButton= (Button) findViewById(R.id.pd_add_to_cart_button)
+        addToCartButton= (Button) findViewById(R.id.pd_add_to_cart_button);
         numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
         productImage = (ImageView) findViewById(R.id.product_image_details);
         productName = (TextView) findViewById(R.id.product_name_details);

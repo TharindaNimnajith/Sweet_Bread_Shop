@@ -130,6 +130,7 @@ public class MenuManagementActivity extends AppCompatActivity {
 
                     for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
                         //keys.add(keyNode.getKey());
+                        //String s = keyNode.getKey();
 
                         Product product = keyNode.getValue(Product.class);
                         list.add(product);

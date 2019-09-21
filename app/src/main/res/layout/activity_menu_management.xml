@@ -24,12 +24,12 @@
         android:focusable="true"
         android:onClick="add"
         android:src="@drawable/add1"
-        app:backgroundTint="#26379C"
+        app:backgroundTint="#0B154E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.89"
-        app:maxImageSize="32dp" />
+        app:maxImageSize="64dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

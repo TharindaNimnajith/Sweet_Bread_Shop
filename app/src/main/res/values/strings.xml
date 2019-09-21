@@ -67,4 +67,9 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="OrderID">OrderID</string>
+    <string name="unit_price_lkr">Unit Price (LKR)</string>
+    <string name="enter_name">Enter name</string>
+    <string name="enter_unit_price">Enter unit price</string>
+    <string name="enter_discount">Enter discount</string>
+    <string name="enter_description">Enter description</string>
 </resources>
