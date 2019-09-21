@@ -42,39 +42,34 @@ import java.util.UUID;
 
 public class AddFoodItemActivity extends AppCompatActivity {
 
+    private final int PICK_IMAGE_REQUEST = 71;
+    private long max_id = 0;
+
     private EditText txtName, txtUnitPrice, txtDiscount, txtDescription;
     private Button btnUpload, btnCancel, btnAdd;
     private ImageView imageView;
 
     private Product product;
+
     private String url = "";
+    private String id = "";
 
     private Task<Uri> task;
     private Uri downloadUri;
+    private Uri filePath;
 
-    private long max_id = 0;
-    private String id = "";
-
-    private final int PICK_IMAGE_REQUEST = 71;
-
-    // Database
     private DatabaseReference databaseReference;
 
-    // Storage
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
-    private Uri filePath;
-
-
-    // Method to clear all user inputs
+    // method to clear all user inputs
     private void clearControls() {
         txtName.setText("");
         txtUnitPrice.setText("");
         txtDiscount.setText("");
         txtDescription.setText("");
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,13 +78,8 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "OnCreate() invoked");
 
-
-        // Firebase Storage Init
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-
-        // Init View
 
         txtName = findViewById(R.id.name_val);
         txtUnitPrice = findViewById(R.id.unit_price_val);
@@ -101,7 +91,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.add_item);
 
         imageView = findViewById(R.id.food_img);
-
 
         product = new Product();
 
@@ -119,7 +108,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
             }
         });
 
-
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
             @Override
@@ -127,7 +115,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
                 chooseImage();
             }
         });
-
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,8 +136,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
                     } else if (filePath == null) {
                         Toast.makeText(getApplicationContext(), "Please upload an Image of the Product", Toast.LENGTH_LONG).show();
                     } else {
-                        // take inputs from the user and assigning them to this instance (product) of the Product
-
                         product.setName(txtName.getText().toString().trim());
                         product.setDescription(txtDescription.getText().toString().trim());
 
@@ -168,35 +153,32 @@ public class AddFoodItemActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Invalid Discount!", Toast.LENGTH_LONG).show();
                         }
 
+                        double up = Double.parseDouble(txtUnitPrice.getText().toString().trim());
+                        double dis = Double.parseDouble(txtDiscount.getText().toString().trim());
+
+                        double price = up - dis;
+
+                        product.setPrice(String.valueOf(price));
 
                         uploadImg();
 
                         //product.setUri(downloadUri);
-
                         product.setImgURL(url);
-
                         //product.setImgURL(product.getUri().toString());
-
                         //product.setTask(task);
                         //product.setImgURL(task.toString());
 
-
                         // insert into the database
-
                         //databaseReference.push().setValue(product);
                         //databaseReference.child(String.valueOf(max_id + 1)).setValue(product);
-
                         id = "P" + (max_id + 1);
                         databaseReference.child(id).setValue(product);
-
 
                         // provide feedback to the user via a toast
                         Toast.makeText(getApplicationContext(), "Item Added Successfully", Toast.LENGTH_LONG).show();
 
-
                         // clear all user inputs
                         clearControls();
-
 
                         // navigate to menu management activity
                         Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
@@ -209,13 +191,11 @@ public class AddFoodItemActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -232,12 +212,10 @@ public class AddFoodItemActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void cancel(View view) {
         Intent intent = new Intent(AddFoodItemActivity.this, MenuManagementActivity.class);
         startActivity(intent);
     }
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     public void chooseImage() {
@@ -264,7 +242,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
             }
         }
     }
-
 
     public void uploadImg() {
         if (filePath != null) {
@@ -334,11 +311,9 @@ public class AddFoodItemActivity extends AppCompatActivity {
                     });
 
             //task = reference.getDownloadUrl();
-
             url = reference.getDownloadUrl().toString();
         }
     }
-
 
     /*
     public void addItem(View view) {
@@ -359,8 +334,6 @@ public class AddFoodItemActivity extends AppCompatActivity {
         // add photo upload required condition
 
         else {
-            // take inputs from the user and assigning them to this instance (product) of the Product
-
             product.setName(txtName.getText().toString().trim());
             product.setDescription(txtDescription.getText().toString().trim());
 
@@ -403,6 +376,12 @@ public class AddFoodItemActivity extends AppCompatActivity {
     }
     */
 
+    /*
+    public void test(View view) {
+        Intent intent = new Intent(AddFoodItemActivity.this, FoodListActivity.class);
+        startActivity(intent);
+    }
+    */
 
     @Override
     protected void onStart() {
@@ -445,12 +424,4 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "onDestroy() invoked");
     }
-
-
-    /*
-    public void test(View view) {
-        Intent intent = new Intent(AddFoodItemActivity.this, FoodListActivity.class);
-        startActivity(intent);
-    }
-    */
 }

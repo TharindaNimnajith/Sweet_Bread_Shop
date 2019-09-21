@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,21 +17,33 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class FoodListActivity extends AppCompatActivity {
 
+    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
         Log.i("Lifecycle", "OnCreate() invoked");
-    }
 
+        /*
+        imageView = findViewById(R.id.img_list_row);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FoodListActivity.this, ViewFoodActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.customer_menu, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -47,12 +60,10 @@ public class FoodListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void buy(View view) {
         Intent intent = new Intent(FoodListActivity.this, ViewFoodActivity.class);
         startActivity(intent);
     }
-
 
     @Override
     protected void onStart() {
