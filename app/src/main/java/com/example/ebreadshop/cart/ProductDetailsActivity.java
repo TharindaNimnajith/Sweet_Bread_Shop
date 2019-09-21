@@ -22,19 +22,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private Button addToCartButton;
     private ImageView productImage;
     private ElegantNumberButton numberButton;
-    private TextView productPrice,productDescription,productName;
+    private TextView productPrice, productDescription, productName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
 
-        addToCartButton= (Button) findViewById(R.id.pd_add_to_cart_button);
-        numberButton = (ElegantNumberButton) findViewById(R.id.number_btn);
-        productImage = (ImageView) findViewById(R.id.product_image_details);
-        productName = (TextView) findViewById(R.id.product_name_details);
-        productDescription = (TextView) findViewById(R.id.product_description_detail);
-        productPrice = (TextView) findViewById(R.id.product_price_detail);
+        addToCartButton = findViewById(R.id.pd_add_to_cart_button);
+        numberButton = findViewById(R.id.number_btn);
+        productImage = findViewById(R.id.product_image_details);
+        productName = findViewById(R.id.product_name_details);
+        productDescription = findViewById(R.id.product_description_detail);
+        productPrice = findViewById(R.id.product_price_detail);
 
         addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,10 +43,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
     private void addingToCartList() {
         String saveCurrentTime, saveCurrentDate;
 
-        Calendar calForDate =   Calendar.getInstance();
+        Calendar calForDate = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentDate = currentDate.format(calForDate.getTime());
 
@@ -61,7 +62,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time", saveCurrentTime);
         cartMap.put("quantity", numberButton.getNumber());
-        cartMap.put("discount","");
+        cartMap.put("discount", "");
 
 
     }

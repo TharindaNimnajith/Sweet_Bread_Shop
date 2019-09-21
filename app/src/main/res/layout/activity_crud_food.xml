@@ -18,7 +18,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="26dp"
             android:layout_marginTop="56dp"
-            android:background="@drawable/button_styles"
+            android:background="@drawable/button_styles_4"
             android:radius="30dp"
             android:text="@string/edit_image"
             android:textColor="@android:color/white"

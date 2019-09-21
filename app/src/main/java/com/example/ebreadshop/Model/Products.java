@@ -1,11 +1,9 @@
 package com.example.ebreadshop.Model;
 
-public class Products
-{
-    private String pname , description, price, image,category, pid, date, time;
+public class Products {
+    private String pname, description, price, image, category, pid, date, time;
 
-    public Products()
-    {
+    public Products() {
 
     }
 

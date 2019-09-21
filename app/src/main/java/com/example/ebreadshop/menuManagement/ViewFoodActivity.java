@@ -139,6 +139,11 @@ public class ViewFoodActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void back(View view) {
+        Intent intent = new Intent(ViewFoodActivity.this, NewFoodListActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

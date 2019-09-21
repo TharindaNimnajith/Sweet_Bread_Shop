@@ -1,12 +1,12 @@
 package com.example.ebreadshop.cart;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ebreadshop.R;
 
@@ -29,7 +29,7 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        NextProcessBtn = (Button) findViewById(R.id.next_process_btn);
-        txtTotalAmount = (TextView) findViewById(R.id.total_price);
+        NextProcessBtn = findViewById(R.id.next_process_btn);
+        txtTotalAmount = findViewById(R.id.total_price);
     }
 }

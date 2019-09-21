@@ -12,7 +12,7 @@ import com.example.ebreadshop.R;
 
 import java.util.List;
 
-public class   NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.ViewHolder> {
+public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.ViewHolder> {
 
     private List<Product> productList;
     //private List<String> keys;
