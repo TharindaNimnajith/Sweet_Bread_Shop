@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import com.google.android.gms.tasks.Task;
 
-public class Product {
+public class Products {
 
     //private static int n = 0;
     //private int id;
