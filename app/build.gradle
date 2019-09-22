@@ -61,7 +61,7 @@ dependencies {
 
     implementation 'com.firebaseui:firebase-ui-database:6.0.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
-
+    implementation 'androidx.annotation:annotation:1.0.2'
     // importing glide library
     implementation 'com.github.bumptech.glide:glide:3.7.0'
 

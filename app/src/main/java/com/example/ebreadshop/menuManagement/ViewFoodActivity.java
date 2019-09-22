@@ -185,4 +185,25 @@ public class ViewFoodActivity extends AppCompatActivity {
 
         Log.i("Lifecycle", "onDestroy() invoked");
     }
+
+    public char[] getProductID() {
+        return new char[0];
+    }
+
+    public char getDescription() {
+        return 0;
+    }
+
+    public int getDiscount() {
+        return 0;
+    }
+
+
+    public int getPrice() {
+        return 0;
+    }
+
+    public int getQuantity() {
+        return 0;
+    }
 }
