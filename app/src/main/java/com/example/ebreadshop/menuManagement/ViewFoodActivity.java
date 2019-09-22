@@ -202,4 +202,8 @@ public class ViewFoodActivity extends AppCompatActivity {
     public int getPrice() {
         return 0;
     }
+
+    public int getQuantity() {
+        return 0;
+    }
 }

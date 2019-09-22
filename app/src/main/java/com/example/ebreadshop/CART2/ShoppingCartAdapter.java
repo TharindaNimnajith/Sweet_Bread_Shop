@@ -25,12 +25,12 @@ import java.util.List;
 
 public class ShoppingCartAdapter extends ArrayAdapter {
     Context context;
-    ArrayList<ShoppingItem> items;
+    ArrayList<ViewFoodActivity> items;
 
     public ShoppingCartAdapter(Context context, ArrayList<ViewFoodActivity> items){
         super(context, 0, items);
         this.context = context;
-        this.items = (ArrayList<ShoppingItem>) items;
+        this.items = (ArrayList<ViewFoodActivity>) items;
     }
 
     @NonNull
@@ -44,7 +44,7 @@ public class ShoppingCartAdapter extends ArrayAdapter {
             );
         }
 
-        ShoppingItem currentItem = (ShoppingItem) getItem(position);
+        ViewFoodActivity currentItem = (ViewFoodActivity) getItem(position);
 
         ImageView img = (ImageView) listItemView.findViewById(R.id.cartItemIcon);
         Picasso.get()
@@ -54,7 +54,7 @@ public class ShoppingCartAdapter extends ArrayAdapter {
                 .fit()
                 .into(img);
 
-        ((TextView) listItemView.findViewById(R.id.cartItemName))
+        ((TextView) listItemView.findViewById(R.id.name))
                 .setText(currentItem.getTitle());
 
         String x = "x " + String.valueOf(currentItem.getQuantity());
