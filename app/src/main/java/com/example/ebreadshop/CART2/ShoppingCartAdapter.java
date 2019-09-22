@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.menuManagement.ViewFoodActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -26,7 +27,7 @@ public class ShoppingCartAdapter extends ArrayAdapter {
     Context context;
     ArrayList<ShoppingItem> items;
 
-    public ShoppingCartAdapter(Context context, List<ShoppingItem> items){
+    public ShoppingCartAdapter(Context context, ArrayList<ViewFoodActivity> items){
         super(context, 0, items);
         this.context = context;
         this.items = (ArrayList<ShoppingItem>) items;

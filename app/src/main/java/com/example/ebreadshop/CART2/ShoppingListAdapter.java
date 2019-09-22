@@ -13,19 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.menuManagement.ViewFoodActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by akshay on 4/4/17.
- */
-
-public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
+public class ShoppingListAdapter extends ArrayAdapter<ViewFoodActivity> {
 
     Context context;
 
-    public ShoppingListAdapter(Context context, List<ShoppingItem> items){
+    public ShoppingListAdapter(Context context, List<ViewFoodActivity> items){
         super(context, 0, items);
         this.context = context;
     }
@@ -41,7 +38,7 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
             );
         }
 
-        ShoppingItem currentItem = getItem(position);
+        ViewFoodActivity currentItem = getItem(position);
 
         ImageView img = (ImageView) listItemView.findViewById(R.id.itemIcon);
         Picasso.get()
@@ -51,13 +48,17 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
                 .fit().centerCrop()
                 .into(img);
 
-        TextView name = (TextView) listItemView.findViewById(R.id.itemName);
+        TextView name = (TextView) listItemView.findViewById(R.id.name);
         name.setText(currentItem.getTitle());
 
-        TextView description = (TextView) listItemView.findViewById(R.id.itemDescription);
+        TextView description = (TextView) listItemView.findViewById(R.id.description);
         description.setText(currentItem.getDescription());
 
-        TextView cost = (TextView) listItemView.findViewById(R.id.itemPrice);
+        TextView discount = (TextView) listItemView.findViewById(R.id.discount);
+        description.setText(currentItem.getDiscount());
+
+
+        TextView cost = (TextView) listItemView.findViewById(R.id.unit_price);
         cost.setText(currentItem.getPrice());
 
         return listItemView;

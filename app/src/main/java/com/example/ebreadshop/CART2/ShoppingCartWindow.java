@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ebreadshop.R;
+import com.example.ebreadshop.menuManagement.ViewFoodActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +39,7 @@ public class ShoppingCartWindow extends AppCompatActivity {
     private FirebaseUser user;
 
     int totalAmount = 0;
-    ArrayList<ShoppingItem> items;// =
+    ArrayList<ViewFoodActivity> items;// =
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +150,7 @@ public class ShoppingCartWindow extends AppCompatActivity {
 
             quantity = Integer.valueOf(snap.child("quantity").getValue().toString());
 
-            items.add(new ShoppingItem(
+            items.add(new ViewFoodActivity(
                     snap.child("productID").getValue().toString(),
                     snap.child("title").getValue().toString(),
                     snap.child("type").getValue().toString(),

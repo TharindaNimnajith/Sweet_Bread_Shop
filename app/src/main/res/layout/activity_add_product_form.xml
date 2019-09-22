@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:focusableInTouchMode="true"
-    tools:context="CART2.AddProductForm">
+    tools:context="com.example.ebreadshop.CART2.AddProductForm">
 
     <ScrollView
         android:layout_width="match_parent"

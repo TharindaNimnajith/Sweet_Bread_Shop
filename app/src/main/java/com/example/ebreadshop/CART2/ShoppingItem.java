@@ -48,4 +48,6 @@ public class ShoppingItem implements Serializable {
     public String getPrice() {
         return NumberFormat.getCurrencyInstance().format(price);
     }
+
+
 }
