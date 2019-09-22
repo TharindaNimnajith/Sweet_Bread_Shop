@@ -88,7 +88,7 @@ public class MenuManagementActivity extends AppCompatActivity {
 
     //private Context context;
 
-    private List<Product> list;
+    private List<ProductWrapper> list;
 
     private String s;
 
@@ -136,7 +136,12 @@ public class MenuManagementActivity extends AppCompatActivity {
                         s = keyNode.getKey();
 
                         Product product = keyNode.getValue(Product.class);
-                        list.add(product);
+
+                        ProductWrapper productWrapper = new ProductWrapper();
+                        productWrapper.setKey(s);
+                        productWrapper.setProduct(product);
+
+                        list.add(productWrapper);
                     }
 
                     //final DataStatus dataStatus = getDataStatus();
@@ -147,16 +152,16 @@ public class MenuManagementActivity extends AppCompatActivity {
 
                     productAdapter.setListener(new ProductAdapter.ItemClickListener() {
                         @Override
-                        public void onItemClick(Product product) {
+                        public void onItemClick(ProductWrapper product) {
                             Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
 
                             // passing data
-                            intent.putExtra("s", s);
+                            intent.putExtra("s", product.getKey());
                             intent.putExtra("key", databaseReference.getKey());
-                            intent.putExtra("name", product.getName());
-                            intent.putExtra("unitPrice", product.getUnitPrice());
-                            intent.putExtra("discount", product.getDiscount());
-                            intent.putExtra("description", product.getDescription());
+                            intent.putExtra("name", product.getProduct().getName());
+                            intent.putExtra("unitPrice", product.getProduct().getUnitPrice());
+                            intent.putExtra("discount", product.getProduct().getDiscount());
+                            intent.putExtra("description", product.getProduct().getDescription());
                             //imageview to show image
                             //image url for update image
 

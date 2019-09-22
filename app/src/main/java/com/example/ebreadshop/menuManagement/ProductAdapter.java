@@ -14,12 +14,12 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private List<Product> productList;
+    private List<ProductWrapper> productList;
     //private List<String> keys;
 
     private ProductAdapter.ItemClickListener listener;
 
-    public ProductAdapter(List<Product> productList) {
+    public ProductAdapter(List<ProductWrapper> productList) {
         this.productList = productList;
     }
 
@@ -42,9 +42,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Product product = productList.get(position);
+        final ProductWrapper product = productList.get(position);
 
-        holder.name.setText(productList.get(position).getName());
+        holder.name.setText(productList.get(position).getProduct().getName());
         //holder.unitPrice.setText((int) productList.get(position).getUnitPrice());
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public interface ItemClickListener {
-        void onItemClick(Product product);
+        void onItemClick(ProductWrapper product);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
