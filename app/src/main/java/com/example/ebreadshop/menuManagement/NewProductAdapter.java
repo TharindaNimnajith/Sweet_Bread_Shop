@@ -47,7 +47,6 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
         holder.name.setText(productList.get(position).getName());
         holder.unitPrice.setText(productList.get(position).getPrice());
 
-
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

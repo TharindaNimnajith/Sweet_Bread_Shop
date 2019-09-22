@@ -90,6 +90,8 @@ public class MenuManagementActivity extends AppCompatActivity {
 
     private List<Product> list;
 
+    private String s;
+
     /*
     public interface DataStatus {
         void DataIsLoaded(List<Product> products, List<String> keys);
@@ -130,7 +132,8 @@ public class MenuManagementActivity extends AppCompatActivity {
 
                     for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
                         //keys.add(keyNode.getKey());
-                        //String s = keyNode.getKey();
+
+                        s = keyNode.getKey();
 
                         Product product = keyNode.getValue(Product.class);
                         list.add(product);
@@ -148,6 +151,7 @@ public class MenuManagementActivity extends AppCompatActivity {
                             Intent intent = new Intent(MenuManagementActivity.this, CRUDFoodActivity.class);
 
                             // passing data
+                            intent.putExtra("s", s);
                             intent.putExtra("key", databaseReference.getKey());
                             intent.putExtra("name", product.getName());
                             intent.putExtra("unitPrice", product.getUnitPrice());

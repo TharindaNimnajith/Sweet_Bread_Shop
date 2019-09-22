@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +60,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
+    private String s;
     private String key;
     private String name;
     private String unitPrice;
@@ -98,6 +100,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.title_crud);
 
         // data
+        s = getIntent().getStringExtra("s");
         key = getIntent().getStringExtra("key");
         name = getIntent().getStringExtra("name");
         unitPrice = getIntent().getStringExtra("unitPrice");
@@ -132,15 +135,21 @@ public class CRUDFoodActivity extends AppCompatActivity {
                 delRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild(key)) {
-                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(key);
+                        if (dataSnapshot.hasChild(s)) {
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(s);
                             databaseReference.removeValue();
 
+                            // provide feedback to the user via a toast
+                            Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_LONG).show();
+
+                            // clear all user inputs
                             clearControls();
 
-                            Toast.makeText(getApplicationContext(), "Data Deleted Successfully", Toast.LENGTH_LONG).show();
+                            // navigate to menu management activity
+                            Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
+                            startActivity(intent);
                         } else {
-                            Toast.makeText(getApplicationContext(), "No Source to Delete", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "No source to delete", Toast.LENGTH_LONG).show();
                         }
                     }
 
@@ -152,7 +161,6 @@ public class CRUDFoodActivity extends AppCompatActivity {
             }
         });
 
-
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,33 +170,74 @@ public class CRUDFoodActivity extends AppCompatActivity {
                 updRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild(key)) {
+                        if (dataSnapshot.hasChild(s)) {
                             try {
-                                product.setName(etName.getText().toString().trim());
+                                if (TextUtils.isEmpty(etName.getText().toString())) {
+                                    Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_LONG).show();
+                                } else if (TextUtils.isEmpty(etUnitPrice.getText().toString())) {
+                                    Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_LONG).show();
+                                } else if (TextUtils.isEmpty(etDescription.getText().toString())) {
+                                    Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_LONG).show();
+                                } else if (TextUtils.isEmpty(etDiscount.getText().toString())) {
+                                    Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_LONG).show();
+                                } else if (Double.parseDouble(etUnitPrice.getText().toString().trim()) < Double.parseDouble(etDiscount.getText().toString().trim())) {
+                                    Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_LONG).show();
+                                    etDiscount.setText(null);
+                                } else if (filePath == null) {
+                                    Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_LONG).show();
+                                } else {
+                                    product.setName(etName.getText().toString().trim());
 
-                                //product.setUnitPrice(Double.parseDouble(etUnitPrice.getText().toString().trim()));
-                                product.setUnitPrice(etUnitPrice.getText().toString().trim());
+                                    try {
+                                        //product.setUnitPrice(Double.parseDouble(etUnitPrice.getText().toString().trim()));
+                                        product.setUnitPrice(etUnitPrice.getText().toString().trim());
+                                    } catch (NumberFormatException e) {
+                                        Toast.makeText(getApplicationContext(), "Invalid unit price!", Toast.LENGTH_LONG).show();
+                                    }
 
-                                //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
-                                product.setDiscount(etDiscount.getText().toString().trim());
+                                    try {
+                                        //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
+                                        product.setDiscount(etDiscount.getText().toString().trim());
+                                    } catch (NumberFormatException e) {
+                                        Toast.makeText(getApplicationContext(), "Invalid discount!", Toast.LENGTH_LONG).show();
+                                    }
 
-                                product.setDescription(etDescription.getText().toString().trim());
+                                    double up = Double.parseDouble(etUnitPrice.getText().toString().trim());
+                                    double dis = Double.parseDouble(etDiscount.getText().toString().trim());
 
-                                uploadImg();
+                                    double price = up - dis;
 
-                                product.setImgURL(url);
+                                    product.setPrice(String.valueOf(price));
 
-                                databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(key);
-                                databaseReference.setValue(product);
+                                    product.setDescription(etDescription.getText().toString().trim());
 
-                                clearControls();
+                                    uploadImg();
 
-                                Toast.makeText(getApplicationContext(), "Data update Successfully", Toast.LENGTH_LONG).show();
+                                    //product.setUri(downloadUri);
+                                    product.setImgURL(url);
+                                    //product.setImgURL(product.getUri().toString());
+                                    //product.setTask(task);
+                                    //product.setImgURL(task.toString());
+
+                                    databaseReference = FirebaseDatabase.getInstance().getReference().child("Product").child(s);
+                                    databaseReference.setValue(product);
+                                    //databaseReference.child(s).setValue(product);
+
+                                    // provide feedback to the user via a toast
+                                    Toast.makeText(getApplicationContext(), "Data updated successfully", Toast.LENGTH_LONG).show();
+
+                                    // clear all user inputs
+                                    clearControls();
+
+                                    // navigate to menu management activity
+                                    Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
+                                    startActivity(intent);
+                                }
                             } catch (NumberFormatException e) {
-                                Toast.makeText(getApplicationContext(), "Invalid Contact Number", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "No Source to Update", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "No source to update", Toast.LENGTH_LONG).show();
                         }
                     }
 
