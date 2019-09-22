@@ -3,9 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:focusableInTouchMode="true"
+    android:orientation="vertical"
     tools:context="com.example.ebreadshop.CART2.AddProductForm">
+
+    <Button
+        android:id="@+id/addProductSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:layout_weight="0.1"
+        android:text="Submit" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,14 +27,6 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Enter Product Details"
-                android:textColor="@android:color/black"
-                android:textSize="24sp" />
-
             <EditText
                 android:id="@+id/addProductId"
                 android:layout_width="match_parent"
@@ -34,13 +34,13 @@
                 android:layout_margin="8dp"
                 android:hint="ProductID" />
 
-
             <EditText
                 android:id="@+id/addProductTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:hint="Title" />
+
 
             <EditText
                 android:id="@+id/addProductType"
@@ -73,16 +73,16 @@
                 android:hint="Description"
                 android:inputType="textImeMultiLine" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Enter Product Details"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
+
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/addProductSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_margin="16dp"
-        android:text="Submit"/>
 
 </LinearLayout>

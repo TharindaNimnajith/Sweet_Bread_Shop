@@ -36,12 +36,12 @@ public class AddProductForm extends AppCompatActivity {
         myref = FirebaseDatabase.getInstance().getReference("sellers/" +
                 FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-        productid = (TextView) findViewById(R.id.addProductId);
-        title = (TextView) findViewById(R.id.addProductTitle);
-        type = (TextView) findViewById(R.id.addProductType);
-        description = (TextView) findViewById(R.id.addProductDescription);
-        price = (TextView) findViewById(R.id.addProductPrice);
-        quantity = (TextView) findViewById(R.id.addProductQuantity);
+        productid = findViewById(R.id.addProductId);
+        title = findViewById(R.id.addProductTitle);
+        type = findViewById(R.id.addProductType);
+        description = findViewById(R.id.addProductDescription);
+        price = findViewById(R.id.addProductPrice);
+        quantity = findViewById(R.id.addProductQuantity);
 
         findViewById(R.id.addProductSubmit).setOnClickListener(new View.OnClickListener() {
 
@@ -60,6 +60,7 @@ public class AddProductForm extends AppCompatActivity {
 
                     myref.addListenerForSingleValueEvent(new ValueEventListener() {
                         ArrayList<ShoppingItem> productList = new ArrayList<>();
+
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             Boolean islistempty = Boolean.valueOf(dataSnapshot.child("isProdsEmpty").getValue().toString());

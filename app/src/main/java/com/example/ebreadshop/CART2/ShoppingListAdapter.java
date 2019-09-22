@@ -1,7 +1,6 @@
 package com.example.ebreadshop.CART2;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ public class ShoppingListAdapter extends ArrayAdapter<ViewFoodActivity> {
 
     Context context;
 
-    public ShoppingListAdapter(Context context, List<ViewFoodActivity> items){
+    public ShoppingListAdapter(Context context, List<ViewFoodActivity> items) {
         super(context, 0, items);
         this.context = context;
     }
@@ -40,7 +39,7 @@ public class ShoppingListAdapter extends ArrayAdapter<ViewFoodActivity> {
 
         ViewFoodActivity currentItem = getItem(position);
 
-        ImageView img = (ImageView) listItemView.findViewById(R.id.itemIcon);
+        ImageView img = listItemView.findViewById(R.id.itemIcon);
         Picasso.get()
                 .load(context.getApplicationContext().getString(R.string.ip)
                         + String.valueOf(currentItem.getProductID())
@@ -48,17 +47,17 @@ public class ShoppingListAdapter extends ArrayAdapter<ViewFoodActivity> {
                 .fit().centerCrop()
                 .into(img);
 
-        TextView name = (TextView) listItemView.findViewById(R.id.name);
+        TextView name = listItemView.findViewById(R.id.name);
         name.setText(currentItem.getTitle());
 
-        TextView description = (TextView) listItemView.findViewById(R.id.description);
+        TextView description = listItemView.findViewById(R.id.description);
         description.setText(currentItem.getDescription());
 
-        TextView discount = (TextView) listItemView.findViewById(R.id.discount);
+        TextView discount = listItemView.findViewById(R.id.discount);
         description.setText(currentItem.getDiscount());
 
 
-        TextView cost = (TextView) listItemView.findViewById(R.id.unit_price);
+        TextView cost = listItemView.findViewById(R.id.unit_price);
         cost.setText(currentItem.getPrice());
 
         return listItemView;

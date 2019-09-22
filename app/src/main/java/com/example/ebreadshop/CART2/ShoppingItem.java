@@ -12,16 +12,12 @@ public class ShoppingItem implements Serializable {
     private String name, type, description, productID;
     private int price, quantity;
 
-    public ShoppingItem(String productId, String name, String type, String description, int price, int quantity){
+    public ShoppingItem(String productId, String name, String type, String description, int price, int quantity) {
         this.productID = productId;
         this.name = name;
         this.type = type;
         this.description = description;
         this.price = price;
-        this.quantity = quantity;
-    }
-
-    public void setQuantity(int quantity){
         this.quantity = quantity;
     }
 
@@ -43,6 +39,10 @@ public class ShoppingItem implements Serializable {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getPrice() {

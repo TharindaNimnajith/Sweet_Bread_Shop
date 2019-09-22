@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.ebreadshop.CART2.ShoppingCartWindow">
 
-    <TextView
-        android:id="@+id/shoppingCartTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
-        android:text="Shopping Cart"/>
-
     <LinearLayout
         android:id="@+id/buttonLinearLayout"
         android:layout_width="match_parent"
@@ -29,21 +19,23 @@
             android:layout_weight="3"
             android:backgroundTint="#eeeeee"
             android:maxLines="2"
-            android:text="Continue\nShopping"/>
+            android:text="Continue\nShopping" />
+
         <Button
             android:id="@+id/clearCart"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:backgroundTint="#eeeeee"
-            android:text="Clear Cart"/>
+            android:text="Clear Cart" />
+
         <Button
             android:id="@+id/checkOut"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:backgroundTint="#eeeeee"
-            android:text="Check Out"/>
+            android:text="Check Out" />
 
     </LinearLayout>
 
@@ -52,9 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/buttonLinearLayout"
-        android:padding="8dp"
         android:background="#dddddd"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="0dp"
@@ -70,9 +62,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:text="0"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:text="0" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -80,9 +72,19 @@
         android:id="@+id/shoppingCartList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/shoppingCartTitle"
-        android:layout_above="@id/paymentDetails">
+        android:layout_above="@id/paymentDetails"
+        android:layout_below="@id/shoppingCartTitle">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/shoppingCartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="16dp"
+        android:text="Shopping Cart"
+        android:textColor="@android:color/black"
+        android:textSize="32sp" />
 
 </RelativeLayout>

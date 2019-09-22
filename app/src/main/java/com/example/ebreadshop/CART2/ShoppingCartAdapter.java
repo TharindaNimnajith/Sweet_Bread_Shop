@@ -1,7 +1,6 @@
 package com.example.ebreadshop.CART2;
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +18,16 @@ import com.squareup.picasso.Picasso;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class ShoppingCartAdapter extends ArrayAdapter {
     Context context;
     ArrayList<ViewFoodActivity> items;
 
-    public ShoppingCartAdapter(Context context, ArrayList<ViewFoodActivity> items){
+    public ShoppingCartAdapter(Context context, ArrayList<ViewFoodActivity> items) {
         super(context, 0, items);
         this.context = context;
-        this.items = (ArrayList<ViewFoodActivity>) items;
+        this.items = items;
     }
 
     @NonNull
@@ -46,7 +43,7 @@ public class ShoppingCartAdapter extends ArrayAdapter {
 
         ViewFoodActivity currentItem = (ViewFoodActivity) getItem(position);
 
-        ImageView img = (ImageView) listItemView.findViewById(R.id.cartItemIcon);
+        ImageView img = listItemView.findViewById(R.id.cartItemIcon);
         Picasso.get()
                 .load(context.getApplicationContext().getString(R.string.ip)
                         + String.valueOf(currentItem.getProductID())
@@ -57,16 +54,16 @@ public class ShoppingCartAdapter extends ArrayAdapter {
         ((TextView) listItemView.findViewById(R.id.name))
                 .setText(currentItem.getTitle());
 
-        String x = "x " + String.valueOf(currentItem.getQuantity());
+        String x = "x " + currentItem.getQuantity();
         ((TextView) listItemView.findViewById(R.id.cartItemQuantity))
                 .setText(x);
 
-        int itemPrice=0;
-        try{
+        int itemPrice = 0;
+        try {
             itemPrice = Integer.valueOf(NumberFormat.getCurrencyInstance()
                     .parse(String.valueOf(currentItem.getPrice()))
                     .toString());
-        } catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         ((TextView) listItemView.findViewById(R.id.cartItemPrice))

@@ -34,12 +34,11 @@ public class ShoppingCartWindow extends AppCompatActivity {
     DatabaseReference myRef;
     Boolean isCartEmpty = true;
     TextView priceView;
+    int totalAmount = 0;
+    ArrayList<ViewFoodActivity> items;// =
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user;
-
-    int totalAmount = 0;
-    ArrayList<ViewFoodActivity> items;// =
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,21 +129,21 @@ public class ShoppingCartWindow extends AppCompatActivity {
 
         totalAmount = 0;
 
-        if (items != null){
+        if (items != null) {
             items.clear();
         } else {
             items = new ArrayList<>();
         }
 
-        for (DataSnapshot snap : dataSnapshot.getChildren()){
+        for (DataSnapshot snap : dataSnapshot.getChildren()) {
 
             int itemPrice = -1, quantity = 0;
 
-            try{
+            try {
                 itemPrice = Integer.valueOf(NumberFormat.getCurrencyInstance()
                         .parse(String.valueOf(snap.child("price").getValue()))
                         .toString());
-            } catch (ParseException e){
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
 
@@ -160,7 +159,7 @@ public class ShoppingCartWindow extends AppCompatActivity {
                     quantity
             ));
             */
-            totalAmount += quantity*itemPrice;
+            totalAmount += quantity * itemPrice;
         }
 
         ListView view = findViewById(R.id.shoppingCartList);
