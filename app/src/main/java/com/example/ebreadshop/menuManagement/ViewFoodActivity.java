@@ -111,7 +111,8 @@ public class ViewFoodActivity extends AppCompatActivity {
     }
 
     public void addToCart(View view) {
-        Intent intent = new Intent(ViewFoodActivity.this, FoodListActivity.class);
+        //Intent intent = new Intent(ViewFoodActivity.this, FoodListActivity.class);
+        Intent intent = new Intent(ViewFoodActivity.this, NewFoodListActivity.class);
 
         Context context = getApplicationContext();
         CharSequence text = "Item Added to the Shopping Cart";
@@ -136,6 +137,11 @@ public class ViewFoodActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void back(View view) {
+        Intent intent = new Intent(ViewFoodActivity.this, NewFoodListActivity.class);
+        startActivity(intent);
     }
 
     @Override

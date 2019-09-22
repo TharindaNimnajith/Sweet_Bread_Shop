@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginTop="1dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/new_food_row"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorAccent"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorText"
         android:fadingEdge="horizontal|vertical"
         android:gravity="center"
         android:orientation="horizontal"
@@ -28,7 +28,7 @@
             android:layout_marginStart="3dp"
             android:layout_weight="1.3"
             android:text="@string/name"
-            android:textSize="50sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/price_txt"
@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="3dp"
             android:layout_weight="0.5"
-            android:textAlignment="textEnd"
             android:text="@string/price"
-            android:textSize="40sp" />
+            android:textAlignment="textEnd"
+            android:textSize="30sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

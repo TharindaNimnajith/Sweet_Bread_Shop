@@ -35,6 +35,8 @@ public class NewFoodListActivity extends AppCompatActivity {
 
     private List<Product> list;
 
+    private String s;
+
     /*
     public DataStatus getDataStatus() {
         DataStatus dataStatus = null;
@@ -76,6 +78,8 @@ public class NewFoodListActivity extends AppCompatActivity {
                     for (DataSnapshot keyNode : dataSnapshot.getChildren()) {
                         //keys.add(keyNode.getKey());
 
+                        s = keyNode.getKey();
+
                         Product product = keyNode.getValue(Product.class);
                         list.add(product);
                     }
@@ -92,6 +96,7 @@ public class NewFoodListActivity extends AppCompatActivity {
                             Intent intent = new Intent(NewFoodListActivity.this, ViewFoodActivity.class);
 
                             //passing data
+                            intent.putExtra("s", s);
                             intent.putExtra("key", databaseReference.getKey());
                             intent.putExtra("name", product.getName());
                             intent.putExtra("unitPrice", product.getUnitPrice());
