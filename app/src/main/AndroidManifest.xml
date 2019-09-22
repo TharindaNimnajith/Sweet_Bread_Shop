@@ -9,15 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".myapplication.UserUpdateDelivery"></activity>
+        <activity android:name=".myapplication.ShowUserDelivery">
+
+        </activity>
+        <activity android:name=".myapplication.UpdateDelivery" />
+        <activity android:name=".myapplication.ShowDelivery"></activity>
+        <activity android:name=".myapplication.deliverylist">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".myapplication.deliveryHome">
+
+        </activity>
+
 
         <activity android:name=".cart.CartActivity" />
         <activity android:name=".cart.ProductDetailsActivity" />
         <activity android:name=".order.Main2Activity" />
 
-        <activity android:name=".myapplication.Dview" />
-        <activity android:name=".myapplication.addDelivery" />
-        <activity android:name=".myapplication.delivery" />
-        <activity android:name=".myapplication.MainActivity" />
+
 
         <activity android:name=".user.custHomeActivity" />
         <activity android:name=".user.SignInActivity" />

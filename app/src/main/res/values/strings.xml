@@ -61,16 +61,41 @@
     <string name="adminpass">Password</string>
     <string name="adminlogin">Login</string>
 
-    <string name="Dtime">Time</string>
+ 
+    
+   
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+  
+    <string name="shopping_cart">Shopping Cart</string>
+
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+  
+    <string name="ip">errr</string>
+	
+	<!--NaYA-->
+	 <string name="Dtime">Time</string>
     <string name="Ddate">Date</string>
     <string name="Dcontract_number">Telephone NO</string>
     <string name="Daddress">Address</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Ddistricts" translatable="false">Apply Date</string>
-    <string name="shopping_cart">Shopping Cart</string>
+	  <string name="Ddistricts" translatable="false">Apply Date</string>
     <string name="title_activity_delivery_home">deliveryHome</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="OrderID">OrderID</string>
-    <string name="ip">errr</string>
+   
+    <string name="OrderID">----------------OrderID</string>
+    <string name="DZipcode">Zipcode</string>
+    <string name="DState">State</string>
+    <string name="Dmessage">--------Select a City-------</string>
+    <string name="UserID">----------------UserID</string>
+    <string name="DPRICE">Price :</string>
+    <string name="ddate">Delivered Date</string>
+    <string name="udatese">----------Selected City</string>
+    <string name="ddeerer">--------Rquested Date</string>
+    <string-array name="name">
+        <item>Malabe</item>
+        <item>Maharagama</item>
+        <item>Kottawa</item>
+        <item>Piliyandala</item>
+    </string-array>
+
+	
 </resources>
