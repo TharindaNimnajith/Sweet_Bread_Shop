@@ -1,14 +1,13 @@
-/*
 package com.example.ebreadshop.cart;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ebreadshop.Model.Products;
 import com.example.ebreadshop.R;
@@ -21,11 +20,8 @@ import com.squareup.picasso.Picasso;
 
 public class HomeActivity extends AppCompatActivity {
 
-private DatabaseReference ProductsRef;
-private RecyclerView recyclerView;
-
-
-
+    private DatabaseReference ProductsRef;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onStart() {
@@ -33,17 +29,17 @@ private RecyclerView recyclerView;
 
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef,Products.class)
-                .build();
+                        .setQuery(ProductsRef, Products.class)
+                        .build();
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
 
-                       holder.txtProductName.setText(model.getPname());
+                        holder.txtProductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Price =" +model.getPrice() + "Rs");
+                        holder.txtProductPrice.setText("Price =" + model.getPrice() + "Rs");
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
                     }
@@ -51,10 +47,11 @@ private RecyclerView recyclerView;
                     @NonNull
                     @Override
                     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext().inflate(R.layout.product_items_layout,parent,false));
+                        //View view = LayoutInflater.from(parent.getContext().inflate(R.layout.product_items_layout, parent, false));
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+
                         ProductViewHolder holder = new ProductViewHolder(view);
                         return holder;
-
                     }
                 };
 
@@ -68,7 +65,5 @@ private RecyclerView recyclerView;
         setContentView(R.layout.activity_home);
 
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
     }
 }
-*/
