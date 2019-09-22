@@ -46,7 +46,7 @@ public class ShoppingCartWindow extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart_window);
 
-        priceView = (TextView) findViewById(R.id.totalPriceCheckout);
+        priceView = findViewById(R.id.totalPriceCheckout);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -150,6 +150,7 @@ public class ShoppingCartWindow extends AppCompatActivity {
 
             quantity = Integer.valueOf(snap.child("quantity").getValue().toString());
 
+            /*
             items.add(new ViewFoodActivity(
                     snap.child("productID").getValue().toString(),
                     snap.child("title").getValue().toString(),
@@ -158,11 +159,11 @@ public class ShoppingCartWindow extends AppCompatActivity {
                     itemPrice,
                     quantity
             ));
-
+            */
             totalAmount += quantity*itemPrice;
         }
 
-        ListView view = (ListView) findViewById(R.id.shoppingCartList);
+        ListView view = findViewById(R.id.shoppingCartList);
         // Now the Cart gets updated whenever the data changes in the server
         view.setAdapter(new ShoppingCartAdapter(getApplicationContext(), items));
 
