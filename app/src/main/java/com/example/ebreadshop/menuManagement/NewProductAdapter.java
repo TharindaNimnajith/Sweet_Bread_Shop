@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ebreadshop.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.ViewHolder> {
@@ -60,6 +61,11 @@ public class NewProductAdapter extends RecyclerView.Adapter<NewProductAdapter.Vi
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    public void filterList(ArrayList<ProductWrapper> filteredList) {
+        productList = filteredList;
+        notifyDataSetChanged();
     }
 
     public interface ItemClickListener {

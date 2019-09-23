@@ -2,9 +2,12 @@ package com.example.ebreadshop.menuManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -37,6 +40,8 @@ public class NewFoodListActivity extends AppCompatActivity {
 
     private String s;
 
+    private EditText search;
+
     /*
     public DataStatus getDataStatus() {
         DataStatus dataStatus = null;
@@ -65,6 +70,25 @@ public class NewFoodListActivity extends AppCompatActivity {
         linearLayout = findViewById(R.id.new_food_row);
 
         list = new ArrayList<>();
+
+        search = findViewById(R.id.search);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Product");
         //final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
@@ -142,6 +166,18 @@ public class NewFoodListActivity extends AppCompatActivity {
         startActivity(intent);
     }
     */
+
+    private void filter(String text) {
+        ArrayList<ProductWrapper> filteredList = new ArrayList<>();
+
+        for (ProductWrapper productWrapper : list) {
+            if (productWrapper.getProduct().getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(productWrapper);
+            }
+        }
+
+        newProductAdapter.filterList(filteredList);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
