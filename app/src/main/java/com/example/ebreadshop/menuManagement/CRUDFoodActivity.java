@@ -94,14 +94,14 @@ public class CRUDFoodActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
         alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Not deleted", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Not deleted", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -177,7 +177,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                             databaseReference.removeValue();
 
                             // provide feedback to the user via a toast
-                            Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_SHORT).show();
 
                             // clear all user inputs
                             //clearControls();
@@ -186,7 +186,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                             Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getApplicationContext(), "No source to delete", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "No source to delete", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -234,7 +234,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                     databaseReference.removeValue();
 
                                     // provide feedback to the user via a toast
-                                    Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Food item deleted successfully", Toast.LENGTH_SHORT).show();
 
                                     // clear all user inputs
                                     //clearControls();
@@ -243,7 +243,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                     Intent intent = new Intent(CRUDFoodActivity.this, MenuManagementActivity.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "No source to delete", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "No source to delete", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -294,20 +294,20 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                 if (dataSnapshot.hasChild(s)) {
                                     try {
                                         if (TextUtils.isEmpty(etName.getText().toString())) {
-                                            Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_SHORT).show();
                                         } else if (TextUtils.isEmpty(etUnitPrice.getText().toString())) {
-                                            Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_SHORT).show();
                                         } else if (TextUtils.isEmpty(etDescription.getText().toString())) {
-                                            Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_SHORT).show();
                                         } else if (TextUtils.isEmpty(etDiscount.getText().toString())) {
-                                            Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_SHORT).show();
                                         } else if (Double.parseDouble(etUnitPrice.getText().toString().trim()) < Double.parseDouble(etDiscount.getText().toString().trim())) {
-                                            Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_SHORT).show();
                                             etDiscount.setText(null);
                                         }
                                 /*
                                 else if (filePath == null) {
-                                    Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_SHORT).show();
                                 }
                                 */
                                         else {
@@ -317,14 +317,14 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                                 //product.setUnitPrice(Double.parseDouble(etUnitPrice.getText().toString().trim()));
                                                 product.setUnitPrice(etUnitPrice.getText().toString().trim());
                                             } catch (NumberFormatException e) {
-                                                Toast.makeText(getApplicationContext(), "Invalid unit price!", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(), "Invalid unit price!", Toast.LENGTH_SHORT).show();
                                             }
 
                                             try {
                                                 //product.setDiscount(Double.parseDouble(etDiscount.getText().toString().trim()));
                                                 product.setDiscount(etDiscount.getText().toString().trim());
                                             } catch (NumberFormatException e) {
-                                                Toast.makeText(getApplicationContext(), "Invalid discount!", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(), "Invalid discount!", Toast.LENGTH_SHORT).show();
                                             }
 
                                             double up = Double.parseDouble(etUnitPrice.getText().toString().trim());
@@ -353,7 +353,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                             //databaseReference.child(s).setValue(product);
 
                                             // provide feedback to the user via a toast
-                                            Toast.makeText(getApplicationContext(), "Data updated successfully", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getApplicationContext(), "Data updated successfully", Toast.LENGTH_SHORT).show();
 
                                             // clear all user inputs
                                             //clearControls();
@@ -363,10 +363,10 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                     } catch (NumberFormatException e) {
-                                        Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "No source to update", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "No source to update", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
@@ -402,7 +402,7 @@ public class CRUDFoodActivity extends AppCompatActivity {
 
                             //image
                         } else {
-                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -529,14 +529,14 @@ public class CRUDFoodActivity extends AppCompatActivity {
 //
 //                            //downloadUri = reference.getDownloadUrl().getResult();
 //
-//                            Toast.makeText(AddFoodItemActivity.this, "Uploaded", Toast.LENGTH_LONG).show();
+//                            Toast.makeText(AddFoodItemActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
 //                        }
 //                    })
 //                    .addOnFailureListener(new OnFailureListener() {
 //                        @Override
 //                        public void onFailure(@NonNull Exception e) {
 //                            progressDialog.dismiss();
-//                            Toast.makeText(AddFoodItemActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_LONG).show();
+//                            Toast.makeText(AddFoodItemActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
 //                        }
 //                    })
 //                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -633,14 +633,14 @@ public class CRUDFoodActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast.makeText(CRUDFoodActivity.this, "Uploaded", Toast.LENGTH_LONG).show();
+                            Toast.makeText(CRUDFoodActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(CRUDFoodActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(CRUDFoodActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

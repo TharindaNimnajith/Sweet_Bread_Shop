@@ -32,6 +32,7 @@
     <string name="enter_description">Enter description</string>
     <string name="todo">TODO</string>
     <string name="img_list_row">img_list_row</string>
+    <string name="search_food">Search Food</string>
 
     <string name="homelogo">homelogo</string>
     <string name="nacc">Create Account</string>
@@ -73,5 +74,4 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="OrderID">OrderID</string>
     <string name="ip">errr</string>
-    <string name="search_food">Search Food</string>
 </resources>

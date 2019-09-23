@@ -154,18 +154,18 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
                         try {
                             if (TextUtils.isEmpty(txtName.getText().toString())) {
-                                Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_SHORT).show();
                             } else if (TextUtils.isEmpty(txtUnitPrice.getText().toString())) {
-                                Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_SHORT).show();
                             } else if (TextUtils.isEmpty(txtDescription.getText().toString())) {
-                                Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_SHORT).show();
                             } else if (TextUtils.isEmpty(txtDiscount.getText().toString())) {
-                                Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_SHORT).show();
                             } else if (Double.parseDouble(txtUnitPrice.getText().toString().trim()) < Double.parseDouble(txtDiscount.getText().toString().trim())) {
-                                Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_SHORT).show();
                                 txtDiscount.setText(null);
                             } else if (mImageUri == null) {
-                                Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_SHORT).show();
                             } else {
                                 uploadImg();
 
@@ -175,14 +175,14 @@ public class AddFoodItemActivity extends AppCompatActivity {
                                     //product.setUnitPrice(Double.parseDouble(txtUnitPrice.getText().toString().trim()));
                                     product.setUnitPrice(txtUnitPrice.getText().toString().trim());
                                 } catch (NumberFormatException e) {
-                                    Toast.makeText(getApplicationContext(), "Invalid unit price!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Invalid unit price!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 try {
                                     //product.setDiscount(Double.parseDouble(txtDiscount.getText().toString().trim()));
                                     product.setDiscount(txtDiscount.getText().toString().trim());
                                 } catch (NumberFormatException e) {
-                                    Toast.makeText(getApplicationContext(), "Invalid discount!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Invalid discount!", Toast.LENGTH_SHORT).show();
                                 }
 
                                 double up = Double.parseDouble(txtUnitPrice.getText().toString().trim());
@@ -201,7 +201,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
                                 databaseReference.child(id).setValue(product);
 
                                 // provide feedback to the user via a toast
-                                Toast.makeText(getApplicationContext(), "Item added successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Item added successfully", Toast.LENGTH_SHORT).show();
 
                                 // clear all user inputs
                                 clearControls();
@@ -211,7 +211,7 @@ public class AddFoodItemActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         } catch (NumberFormatException e) {
-                            Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -339,14 +339,14 @@ public class AddFoodItemActivity extends AppCompatActivity {
 
                             //downloadUri = reference.getDownloadUrl().getResult();
 
-                            Toast.makeText(AddFoodItemActivity.this, "Uploaded", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddFoodItemActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(AddFoodItemActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddFoodItemActivity.this, "Failed" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -432,13 +432,13 @@ public class AddFoodItemActivity extends AppCompatActivity {
         //databaseReference = FirebaseDatabase.getInstance().getReference().child("Product");
 
         if (TextUtils.isEmpty(txtName.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please enter product name", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtUnitPrice.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please enter unit price", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtDescription.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please enter description", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(txtDiscount.getText().toString())) {
-            Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please enter discount", Toast.LENGTH_SHORT).show();
         }
 
         // add photo upload required condition
@@ -450,17 +450,17 @@ public class AddFoodItemActivity extends AppCompatActivity {
             try {
                 product.setUnitPrice(Double.parseDouble(txtUnitPrice.getText().toString().trim()));
             } catch (NumberFormatException e) {
-                Toast.makeText(getApplicationContext(), "Invalid unit price", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Invalid unit price", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Error occurred! Try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error occurred! Try again", Toast.LENGTH_SHORT).show();
             }
 
             try {
                 product.setDiscount(Double.parseDouble(txtDiscount.getText().toString().trim()));
             } catch (NumberFormatException e) {
-                Toast.makeText(getApplicationContext(), "Invalid discount", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Invalid discount", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Error occurred! Try again", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error occurred! Try again", Toast.LENGTH_SHORT).show();
             }
 
             // insert into the database
@@ -471,10 +471,10 @@ public class AddFoodItemActivity extends AppCompatActivity {
             // provide feedback to the user via a toast
             //Context context = getApplicationContext();
             //CharSequence text = "Item Added Successfully";
-            //int duration = Toast.LENGTH_LONG;
+            //int duration = Toast.LENGTH_SHORT;
             //Toast toast = Toast.makeText(context, text, duration);
             //toast.show();
-            Toast.makeText(getApplicationContext(), "Item Added Successfully", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Item Added Successfully", Toast.LENGTH_SHORT).show();
 
             // clear all user inputs
             clearControls();
