@@ -2,10 +2,13 @@ package com.example.ebreadshop.menuManagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -92,6 +95,8 @@ public class MenuManagementActivity extends AppCompatActivity {
 
     private String s;
 
+    private EditText search;
+
     /*
     public interface DataStatus {
         void DataIsLoaded(List<Product> products, List<String> keys);
@@ -112,6 +117,25 @@ public class MenuManagementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_management);
 
         Log.i("Lifecycle", "OnCreate() invoked");
+
+        search = findViewById(R.id.search);
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -189,6 +213,18 @@ public class MenuManagementActivity extends AppCompatActivity {
             }
         });
         */
+    }
+
+    private void filter(String text) {
+        ArrayList<ProductWrapper> filteredList = new ArrayList<>();
+
+        for (ProductWrapper productWrapper : list) {
+            if (productWrapper.getProduct().getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(productWrapper);
+            }
+        }
+
+        productAdapter.filterList(filteredList);
     }
 
     /*

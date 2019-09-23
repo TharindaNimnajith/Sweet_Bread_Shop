@@ -73,4 +73,5 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="OrderID">OrderID</string>
     <string name="ip">errr</string>
+    <string name="search_food">Search Food</string>
 </resources>
