@@ -2,6 +2,7 @@ package com.example.ebreadshop.myapplication;
 
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
@@ -32,6 +34,7 @@ import com.google.firebase.database.ValueEventListener;
 
 
 import java.text.DateFormat;
+import java.time.Clock;
 import java.util.Calendar;
 
 public class deliveryHome extends AppCompatActivity implements AdapterView.OnItemSelectedListener  {
@@ -44,6 +47,8 @@ public class deliveryHome extends AppCompatActivity implements AdapterView.OnIte
     Spinner spicity;
     long maxid = 0;
     DeliveryHomeTable dev;
+
+    public TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
     DatabaseReference db;
 
@@ -90,6 +95,21 @@ public class deliveryHome extends AppCompatActivity implements AdapterView.OnIte
 
 
         DisplayDate = (TextView) findViewById(R.id.DhomeDate);
+        txttime = (TextView)findViewById(R.id.DhomeTime);
+
+        txttime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minu = calendar.get(Calendar.MINUTE);
+
+                TimePickerDialog dialog = new TimePickerDialog(deliveryHome.this,android.R.style.Theme_Black_NoTitleBar,mTimeSetListener,hour,minu,false);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
 
 
         DisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -118,6 +138,14 @@ public class deliveryHome extends AppCompatActivity implements AdapterView.OnIte
                 String date = day + " . " + month + " . " + year;
                 DisplayDate.setText(date);
 
+            }
+        };
+
+        mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String time = hourOfDay + " . " + minute ;
+                txttime.setText(time);
             }
         };
 
