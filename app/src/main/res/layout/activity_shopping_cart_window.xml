@@ -4,7 +4,7 @@
     android:id="@+id/shoppingCartWindowLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ebreadshop.CART2.ShoppingCartWindow">
+    tools:context="com.example.ebreadshop.cart2.ShoppingCartWindow">
 
     <LinearLayout
         android:id="@+id/buttonLinearLayout"

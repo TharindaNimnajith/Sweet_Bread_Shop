@@ -1,4 +1,4 @@
-package com.example.ebreadshop.CART2;
+package com.example.ebreadshop.cart2;
 
 import android.content.Intent;
 import android.os.Bundle;

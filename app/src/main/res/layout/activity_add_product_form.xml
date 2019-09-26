@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context="com.example.ebreadshop.CART2.AddProductForm">
+    tools:context="com.example.ebreadshop.cart2.AddProductForm">
 
     <Button
         android:id="@+id/addProductSubmit"

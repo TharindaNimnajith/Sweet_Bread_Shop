@@ -305,11 +305,11 @@ public class CRUDFoodActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), "Discount should be less than unit price", Toast.LENGTH_SHORT).show();
                                             etDiscount.setText(null);
                                         }
-                                /*
-                                else if (filePath == null) {
-                                    Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_SHORT).show();
-                                }
-                                */
+                                        /*
+                                        else if (filePath == null) {
+                                            Toast.makeText(getApplicationContext(), "Please upload an image of the product", Toast.LENGTH_SHORT).show();
+                                        }
+                                        */
                                         else {
                                             product.setName(etName.getText().toString().trim());
 

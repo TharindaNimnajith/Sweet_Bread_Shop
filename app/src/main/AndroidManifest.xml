@@ -13,9 +13,9 @@
 
         <activity android:name=".cart.CartActivity" />
         <activity android:name=".cart.ProductDetailsActivity" />
-        <activity android:name=".CART2.MainActivity" />
-        <activity android:name=".CART2.AddProductForm" />
-        <activity android:name=".CART2.ShoppingCartWindow" />
+        <activity android:name=".cart2.MainActivity" />
+        <activity android:name=".cart2.AddProductForm" />
+        <activity android:name=".cart2.ShoppingCartWindow" />
         <activity android:name=".order.Main2Activity" />
 
         <activity android:name=".myapplication.Dview" />
