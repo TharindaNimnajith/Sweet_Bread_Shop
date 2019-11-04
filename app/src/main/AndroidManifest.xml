@@ -11,17 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".myapplication.UserUpdateDelivery" />
+        <activity android:name=".myapplication.ShowUserDelivery" />
+        <activity android:name=".myapplication.UpdateDelivery" />
+        <activity android:name=".myapplication.ShowDelivery" />
+        <activity android:name=".myapplication.deliverylist" />
+        <activity android:name=".myapplication.deliveryHome" />
+
         <activity android:name=".cart.CartActivity" />
         <activity android:name=".cart.ProductDetailsActivity" />
         <activity android:name=".cart2.MainActivity" />
         <activity android:name=".cart2.AddProductForm" />
         <activity android:name=".cart2.ShoppingCartWindow" />
         <activity android:name=".order.Main2Activity" />
-
-        <activity android:name=".myapplication.Dview" />
-        <activity android:name=".myapplication.addDelivery" />
-        <activity android:name=".myapplication.delivery" />
-        <activity android:name=".myapplication.MainActivity" />
 
         <activity android:name=".user.custHomeActivity" />
         <activity android:name=".user.SignInActivity" />
